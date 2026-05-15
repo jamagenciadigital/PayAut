@@ -61,16 +61,16 @@ export const PaymentLinks = () => {
 
   return (
     <Layout role="MERCHANT">
-      <div className="p-12 overflow-y-auto w-full max-w-[1600px] mx-auto bg-[#F2F2F2] min-h-screen">
-        <header className="flex justify-between items-center mb-12">
+      <div className="p-4 md:p-12 w-full max-w-[1600px] mx-auto bg-[#F2F2F2] min-h-screen">
+        <header className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12 pt-12 lg:pt-0">
           <div>
-            <h1 className="text-3xl font-bold text-black">Links de Pago</h1>
+            <h1 className="text-2xl md:text-3xl font-bold text-black">Links de Pago</h1>
             <p className="text-black/60">Gestiona y monitorea tus puntos de recaudo digital</p>
           </div>
           
           <button 
             onClick={() => setIsModalOpen(true)}
-            className="flex items-center gap-2 bg-[#cc0066] text-white px-8 py-4 rounded-xl font-bold shadow-premium hover:scale-105 transition-all outline-none border-none cursor-pointer"
+            className="w-full md:w-auto flex items-center justify-center gap-2 bg-[#cc0066] text-white px-8 py-4 rounded-xl font-bold shadow-premium hover:scale-105 transition-all outline-none border-none cursor-pointer"
           >
             <Plus size={20} />
             Nuevo Link de Pago
@@ -78,7 +78,7 @@ export const PaymentLinks = () => {
         </header>
 
         {/* Filters & Search */}
-        <div className="flex gap-4 mb-8">
+        <div className="flex flex-col md:flex-row gap-4 mb-8">
           <div className="flex-1 relative">
             <input 
               type="text" 
@@ -89,7 +89,7 @@ export const PaymentLinks = () => {
             />
             <Search size={18} className="absolute left-4 top-4 text-black/20" />
           </div>
-          <button className="bg-white border border-black/5 px-6 rounded-xl flex items-center gap-2 text-sm font-black uppercase tracking-widest text-black/40 hover:bg-black/5 transition-colors">
+          <button className="w-full md:w-auto bg-white border border-black/5 px-6 py-4 md:py-0 rounded-xl flex items-center justify-center gap-2 text-sm font-black uppercase tracking-widest text-black/40 hover:bg-black/5 transition-colors">
             <Filter size={16} />
             Filtros
           </button>

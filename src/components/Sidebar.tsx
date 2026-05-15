@@ -21,7 +21,7 @@ export const Sidebar = ({ role }: SidebarProps) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    // In a real app, clear tokens/session here
+    localStorage.removeItem('currentUser');
     navigate('/login');
   };
 
@@ -42,6 +42,11 @@ export const Sidebar = ({ role }: SidebarProps) => {
   ];
 
   const menuItems = role === 'SUPERADMIN' ? SuperadminMenu : MerchantMenu;
+
+  const userStr = localStorage.getItem('currentUser');
+  const user = userStr ? JSON.parse(userStr) : null;
+  const userName = user?.name || 'Usuario';
+  const userInitials = userName.split(' ').map((n: string) => n[0]).join('').toUpperCase().substring(0, 2);
 
   return (
     <div className="w-72 h-full bg-gradient-to-b from-[#cc0066] to-[#7a00cc] flex flex-col p-6 overflow-hidden">
@@ -81,11 +86,11 @@ export const Sidebar = ({ role }: SidebarProps) => {
       {/* User Footer */}
       <div className="mt-auto pt-6 border-t border-white/10">
         <div className="flex items-center gap-4 px-2">
-          <div className="w-10 h-10 rounded-full bg-white/20 border border-white/30 flex items-center justify-center text-white font-bold shadow-inner">
-            JD
+          <div className="w-10 h-10 rounded-full bg-white/20 border border-white/30 flex items-center justify-center text-white font-bold shadow-inner text-xs">
+            {userInitials}
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-white text-sm font-bold truncate">Juan Delgado</p>
+            <p className="text-white text-sm font-bold truncate">{userName}</p>
             <p className="text-white/40 text-[10px] uppercase tracking-widest font-black">
               {role === 'SUPERADMIN' ? 'Super Administrador' : 'Comercio'}
             </p>

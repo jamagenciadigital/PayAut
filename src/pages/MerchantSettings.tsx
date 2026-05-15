@@ -105,38 +105,38 @@ export const MerchantSettings = () => {
 
   return (
     <Layout role="MERCHANT">
-      <div className="p-8 max-w-[1400px] mx-auto">
-        <div className="mb-8">
+      <div className="p-4 md:p-8 w-full max-w-[1400px] mx-auto flex flex-col min-h-screen">
+        <div className="mb-8 pt-12 lg:pt-0">
           <p className="text-[10px] font-black text-[#cc0066] uppercase tracking-[0.3em] mb-2">Ajustes / {sections.find(s => s.id === activeSection)?.label}</p>
-          <h1 className="text-3xl font-black text-black uppercase tracking-tight">Configuración del Comercio</h1>
+          <h1 className="text-2xl md:text-3xl font-black text-black uppercase tracking-tight">Configuración del Comercio</h1>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Sidebar Menu */}
-          <div className="lg:col-span-3 space-y-3">
-            <div className="bg-white rounded-[32px] p-4 shadow-xl shadow-black/5 border border-black/5 overflow-hidden">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-20 lg:mb-0">
+          {/* Sidebar Menu - Horizontal on mobile */}
+          <div className="lg:col-span-3">
+            <div className="bg-white rounded-[32px] p-2 md:p-4 shadow-xl shadow-black/5 border border-black/5 flex lg:flex-col gap-2 overflow-x-auto no-scrollbar lg:overflow-visible">
               {sections.map((section) => (
                 <button
                   key={section.id}
                   onClick={() => setActiveSection(section.id as Section)}
-                  className={`w-full flex items-center gap-4 p-4 rounded-2xl transition-all duration-300 group ${
+                  className={`flex-none lg:flex items-center gap-4 p-3 lg:p-4 rounded-2xl transition-all duration-300 group min-w-[200px] lg:min-w-0 ${
                     activeSection === section.id 
-                      ? 'bg-slate-50 text-black translate-x-2' 
+                      ? 'bg-slate-50 text-black lg:translate-x-2' 
                       : 'text-black/40 hover:bg-slate-50/50 hover:text-black/60'
                   }`}
                 >
-                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all ${
+                  <div className={`w-10 h-10 lg:w-12 lg:h-12 rounded-xl flex items-center justify-center transition-all ${
                     activeSection === section.id 
                       ? 'bg-gradient-to-br from-[#cc0066] to-[#7a00cc] text-white shadow-lg shadow-[#cc0066]/20' 
                       : 'bg-slate-100 text-black/20 group-hover:bg-white group-hover:text-black/40'
                   }`}>
-                    <section.icon size={20} />
+                    <section.icon size={18} className="lg:size-5" />
                   </div>
                   <div className="text-left min-w-0">
-                    <p className={`text-sm font-black uppercase tracking-tight truncate ${activeSection === section.id ? 'text-black' : 'text-black/40'}`}>
+                    <p className={`text-[10px] lg:text-sm font-black uppercase tracking-tight truncate ${activeSection === section.id ? 'text-black' : 'text-black/40'}`}>
                       {section.label}
                     </p>
-                    <p className="text-[9px] font-bold text-black/20 uppercase tracking-widest truncate">
+                    <p className="hidden lg:block text-[9px] font-bold text-black/20 uppercase tracking-widest truncate">
                       {section.description}
                     </p>
                   </div>

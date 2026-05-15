@@ -761,11 +761,11 @@ export const SuperadminSettings = () => {
 
   return (
     <Layout role="SUPERADMIN">
-      <div className="p-12 w-full max-w-[1280px] mx-auto bg-[#F2F2F2] min-h-screen">
+      <div className="p-4 md:p-12 w-full max-w-[1280px] mx-auto bg-[#F2F2F2] min-h-screen">
         {/* Page Header */}
-        <header className="flex justify-between items-end mb-8">
+        <header className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-8 pt-12 lg:pt-0">
           <div>
-            <h1 className="text-2xl font-black text-black tracking-tight uppercase">
+            <h1 className="text-xl md:text-2xl font-black text-black tracking-tight uppercase">
               Configuración del Sistema
             </h1>
             <p className="text-black/40 text-sm mt-1">
@@ -776,7 +776,7 @@ export const SuperadminSettings = () => {
             <button
               onClick={handleSaveGateway}
               disabled={saving}
-              className="bg-[#cc0066] text-white px-8 py-3 rounded-sm font-bold flex items-center gap-2 hover:bg-[#a30052] transition-all disabled:opacity-50"
+              className="w-full md:w-auto bg-[#cc0066] text-white px-8 py-3 rounded-sm font-bold flex items-center justify-center gap-2 hover:bg-[#a30052] transition-all disabled:opacity-50"
             >
               {saving ? (
                 <div className="animate-spin h-4 w-4 border-2 border-white border-t-transparent rounded-full" />

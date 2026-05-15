@@ -72,31 +72,31 @@ export const SuperadminTransactions = () => {
 
   return (
     <Layout role="SUPERADMIN">
-      <div className="p-6 md:p-12 w-full max-w-[1600px] mx-auto flex flex-col gap-10 bg-[#F2F2F2] min-h-screen">
-        <header className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+      <div className="p-4 md:p-12 w-full max-w-[1600px] mx-auto flex flex-col gap-10 bg-[#F2F2F2] min-h-screen">
+        <header className="flex flex-col md:flex-row md:items-end justify-between gap-6 pt-12 lg:pt-0">
           <div>
-            <h1 className="text-3xl md:text-4xl font-black text-black uppercase tracking-tighter">Historial Transaccional</h1>
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-black text-black uppercase tracking-tighter">Historial Transaccional</h1>
             <p className="text-black/40 text-[10px] font-black uppercase tracking-[0.2em] mt-2">Monitoreo de flujos y conciliación</p>
           </div>
           
-          <div className="flex flex-wrap items-center gap-4">
-            <div className="relative">
+          <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-4">
+            <div className="relative w-full sm:w-auto">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-black/20" size={18} />
               <input 
                 type="text" 
                 placeholder="Buscar por cliente o ID..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-12 pr-6 py-4 bg-white border border-black/5 rounded-2xl text-sm font-bold focus:outline-none focus:border-[#cc0066] transition-all w-64 shadow-sm"
+                className="pl-12 pr-6 py-4 bg-white border border-black/5 rounded-2xl text-sm font-bold focus:outline-none focus:border-[#cc0066] transition-all w-full sm:w-64 shadow-sm"
               />
             </div>
             
-            <div className="relative">
+            <div className="relative w-full sm:w-auto">
               <Filter className="absolute left-4 top-1/2 -translate-y-1/2 text-[#cc0066]" size={18} />
               <select 
                 value={merchantFilter}
                 onChange={(e) => setMerchantFilter(e.target.value)}
-                className="pl-12 pr-10 py-4 bg-white border border-black/5 rounded-2xl text-sm font-black uppercase tracking-tight focus:outline-none appearance-none cursor-pointer shadow-sm"
+                className="pl-12 pr-10 py-4 bg-white border border-black/5 rounded-2xl text-sm font-black uppercase tracking-tight focus:outline-none appearance-none cursor-pointer shadow-sm w-full"
               >
                 <option value="ALL">Todos los Comercios</option>
                 {merchants.map(m => (

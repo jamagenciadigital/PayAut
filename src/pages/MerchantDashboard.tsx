@@ -244,16 +244,16 @@ export const MerchantDashboard = () => {
 
   return (
     <Layout role="MERCHANT">
-      <div className="p-12 overflow-y-auto w-full max-w-[1600px] mx-auto bg-[#F2F2F2] min-h-screen">
-        <header className="flex justify-between items-center mb-12">
+      <div className="p-4 md:p-12 w-full max-w-[1600px] mx-auto bg-[#F2F2F2] min-h-screen">
+        <header className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12 pt-12 lg:pt-0">
           <div>
-            <h1 className="text-3xl font-bold text-black">Dashboard</h1>
+            <h1 className="text-2xl md:text-3xl font-bold text-black">Dashboard</h1>
             <p className="text-black/60">Bienvenido de nuevo, {currentUser.name}</p>
           </div>
           
           <button 
             onClick={() => setIsLinkModalOpen(true)}
-            className="flex items-center gap-2 bg-[#cc0066] text-white px-8 py-4 rounded-xl font-bold shadow-premium hover:scale-105 transition-all outline-none border-none cursor-pointer"
+            className="w-full md:w-auto flex items-center justify-center gap-2 bg-[#cc0066] text-white px-8 py-4 rounded-xl font-bold shadow-premium hover:scale-105 transition-all outline-none border-none cursor-pointer"
           >
             <Plus size={20} />
             Nuevo Link de Pago
@@ -261,7 +261,7 @@ export const MerchantDashboard = () => {
         </header>
 
         {/* Stats Grid */}
-        <div className="flex gap-8 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 mb-12">
           <StatCard 
             title="Ventas Totales" 
             value="$1,250,000" 
@@ -286,7 +286,7 @@ export const MerchantDashboard = () => {
         </div>
 
         {/* Recent Transactions Table */}
-        <div className="bg-white border border-black/5 rounded-sm shadow-sm p-10">
+        <div className="bg-white border border-black/5 rounded-sm shadow-sm p-4 md:p-10">
           <div className="flex justify-between items-center mb-10">
             <h2 className="text-xl font-bold text-black">Transacciones Recientes</h2>
             <button className="text-[#cc0066] text-sm font-bold hover:underline cursor-pointer">Ver todas</button>

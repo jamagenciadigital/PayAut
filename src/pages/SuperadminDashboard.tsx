@@ -68,9 +68,9 @@ export const SuperadminDashboard = () => {
 
   return (
     <Layout role="SUPERADMIN">
-      <div className="p-6 md:p-12 w-full max-w-[1600px] mx-auto flex flex-col gap-8 bg-[#F2F2F2] min-h-screen">
-        <header className="mb-4">
-          <h1 className="text-2xl font-black text-black tracking-tight uppercase">Panel Global de Control</h1>
+      <div className="p-4 md:p-12 w-full max-w-[1600px] mx-auto flex flex-col gap-8 bg-[#F2F2F2] min-h-screen">
+        <header className="mb-4 pt-12 lg:pt-0">
+          <h1 className="text-xl md:text-2xl font-black text-black tracking-tight uppercase">Panel Global de Control</h1>
           <p className="text-black/40 text-[10px] font-black uppercase tracking-[0.2em] mt-1">Monitoreo en tiempo real de la plataforma</p>
         </header>
 
