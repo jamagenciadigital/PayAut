@@ -7,11 +7,19 @@ neonConfig.poolQueryViaFetch = true;
 // Helper to validate and get the connection string
 const getConnectionString = () => {
   const url = import.meta.env.VITE_NEON_DATABASE_URL || '';
-  if (!url.startsWith('postgresql://') && !url.startsWith('postgres://')) {
-    console.warn('⚠️ Neon: URL inválida o no configurada. Modo mock activo.', url.slice(0, 30));
+  
+  // LOG DE DIAGNÓSTICO (Visible en la consola F12 del navegador)
+  if (!url) {
+    console.error('❌ ERROR CRÍTICO: La variable VITE_NEON_DATABASE_URL está VACÍA en este entorno.');
     return null;
   }
-  console.info('✅ Neon: Conectado a base de datos.');
+
+  if (!url.startsWith('postgresql://') && !url.startsWith('postgres://')) {
+    console.warn('⚠️ Neon: URL con formato inválido. Comienza con:', url.slice(0, 10));
+    return null;
+  }
+  
+  console.info('✅ Neon: Variable detectada correctamente.');
   return url;
 };
 
