@@ -324,22 +324,19 @@ body {
 }
 
 .text-white {
-  color: var(--text-primary);
+  color: #ffffff;
 }
 
 .text-white\/40 {
-  color: var(--text-secondary);
-  opacity: 0.6;
+  color: rgba(255, 255, 255, 0.4);
 }
 
 .text-white\/60 {
-  color: var(--text-secondary);
-  opacity: 0.8;
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .text-white\/80 {
-  color: var(--text-primary);
-  opacity: 0.9;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .text-brand-cyan {
