@@ -144,7 +144,7 @@ export const Register = () => {
 
       {/* Header */}
       <div className="relative z-10 mb-8 flex flex-col items-center">
-        <img src={logo} alt="PayAut" className="h-12 mb-4" />
+        <img src={logo} alt="PagoX" className="h-12 mb-4" />
         <div className="flex items-center gap-2">
           {STEPS.map((s) => (
             <React.Fragment key={s.id}>

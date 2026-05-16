@@ -57,7 +57,7 @@ export const Login = () => {
         }}
       >
         <div className="text-center mb-8 w-full">
-          <img src={logo} alt="PayAut Logo" className="h-16 mb-6 mx-auto" />
+          <img src={logo} alt="PagoX Logo" className="h-16 mb-6 mx-auto" />
           <h1 className="title_login">Iniciar sesion</h1>
         </div>
 

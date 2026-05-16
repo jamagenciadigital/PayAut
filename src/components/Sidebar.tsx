@@ -52,7 +52,7 @@ export const Sidebar = ({ role }: SidebarProps) => {
     <div className="w-72 h-full bg-gradient-to-b from-[#cc0066] to-[#7a00cc] flex flex-col p-6 overflow-hidden">
       {/* Logo Section */}
       <div className="flex items-center gap-3 px-2 mb-16 shrink-0">
-        <img src={logoWhite} alt="PayAut" className="h-10 w-auto" />
+        <img src={logoWhite} alt="PagoX" className="h-10 w-auto" />
       </div>
 
       {/* Navigation Menu */}
