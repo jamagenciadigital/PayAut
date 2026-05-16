@@ -48,17 +48,17 @@ export const PaymentLinkModal = ({ isOpen, onClose, onSave, saving }: any) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 bg-black/60 backdrop-blur-md z-[9999] flex items-center justify-center p-4"
+      className="fixed inset-0 bg-black/60 backdrop-blur-md z-[9999] flex items-center justify-center p-0 md:p-4"
       onClick={onClose}
     >
       <motion.div
-        initial={{ scale: 0.95, opacity: 0, y: 20 }}
-        animate={{ scale: 1, opacity: 1, y: 0 }}
-        exit={{ scale: 0.95, opacity: 0, y: 20 }}
-        className="bg-white w-full max-w-xl rounded-[32px] shadow-2xl overflow-hidden"
+        initial={{ opacity: 0, scale: 0.95, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.95, y: 20 }}
+        className="bg-white w-full max-w-md h-full md:h-auto md:max-h-[90vh] md:rounded-[32px] shadow-2xl overflow-hidden relative flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="bg-[#7F00DF] p-8 text-white flex justify-between items-center">
+        <div className="bg-[#7F00DF] p-6 pt-12 md:p-8 md:pt-8 text-white flex justify-between items-center shrink-0">
           <div>
             <h2 className="text-xl font-black text-white tracking-tighter uppercase">
               {generatedLink ? '¡Link Creado!' : 'Nuevo Link de Pago'}
@@ -72,7 +72,7 @@ export const PaymentLinkModal = ({ isOpen, onClose, onSave, saving }: any) => {
           </button>
         </div>
 
-        <div className="p-8">
+        <div className="p-6 md:p-8 overflow-y-auto flex-1 custom-scrollbar">
           <AnimatePresence mode="wait">
             {!generatedLink ? (
               <motion.div
@@ -83,7 +83,7 @@ export const PaymentLinkModal = ({ isOpen, onClose, onSave, saving }: any) => {
                 className="flex flex-col gap-6"
               >
                 <div className="flex flex-col gap-2">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-black/40">Concepto del Cobro</label>
+                  <label className="text-[11px] font-black uppercase tracking-widest text-black/40">Concepto del Cobro</label>
                   <div className="relative">
                     <input
                       type="text"
@@ -97,10 +97,10 @@ export const PaymentLinkModal = ({ isOpen, onClose, onSave, saving }: any) => {
                 </div>
 
                 <div className="flex flex-col gap-4 bg-slate-50 p-6 rounded-3xl border border-black/5">
-                  <div className="flex items-center justify-between">
-                    <label className="text-[10px] font-black uppercase tracking-widest text-black/40">Monto del Link</label>
-                    <label className="flex items-center gap-2 cursor-pointer group">
-                      <div className={`w-10 h-5 rounded-full transition-all relative ${form.isOpenAmount ? 'bg-emerald-500' : 'bg-black/10'}`}>
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <label className="text-[11px] font-black uppercase tracking-widest text-black/40">Monto del Link</label>
+                    <label className="flex items-center gap-2 cursor-pointer group self-start sm:self-auto">
+                      <div className={`w-10 h-5 rounded-full transition-all relative ${form.isOpenAmount ? 'bg-emerald-500' : 'bg-black/20'}`}>
                         <div className={`absolute top-1 w-3 h-3 bg-white rounded-full transition-all ${form.isOpenAmount ? 'left-6' : 'left-1'}`} />
                         <input 
                           type="checkbox" 
@@ -109,7 +109,7 @@ export const PaymentLinkModal = ({ isOpen, onClose, onSave, saving }: any) => {
                           onChange={(e) => setForm({ ...form, isOpenAmount: e.target.checked })}
                         />
                       </div>
-                      <span className="text-[9px] font-black text-black/60 uppercase tracking-tight group-hover:text-black transition-colors">El cliente define el monto</span>
+                      <span className="text-[10px] font-black text-black/60 uppercase tracking-tight group-hover:text-black transition-colors">Abierto</span>
                     </label>
                   </div>
                   
@@ -119,7 +119,7 @@ export const PaymentLinkModal = ({ isOpen, onClose, onSave, saving }: any) => {
                       disabled={form.isOpenAmount}
                       value={form.amount}
                       onChange={(e) => setForm({ ...form, amount: e.target.value })}
-                      placeholder={form.isOpenAmount ? "Monto variable" : "0.00"}
+                      placeholder={form.isOpenAmount ? "El cliente define" : "0.00"}
                       className={`w-full bg-white border-2 p-5 pl-14 rounded-2xl text-2xl font-black text-black focus:outline-none transition-all ${
                         form.isOpenAmount ? 'opacity-40 border-dashed border-black/10' : 'border-[#7F00DF]/10 focus:border-[#7F00DF]'
                       }`}
@@ -129,7 +129,7 @@ export const PaymentLinkModal = ({ isOpen, onClose, onSave, saving }: any) => {
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-black/40">URL de Retorno (Opcional)</label>
+                  <label className="text-[11px] font-black uppercase tracking-widest text-black/40">URL de Retorno (Opcional)</label>
                   <div className="relative">
                     <input
                       type="url"
@@ -143,8 +143,8 @@ export const PaymentLinkModal = ({ isOpen, onClose, onSave, saving }: any) => {
                 </div>
 
                 <div className="flex flex-col gap-4">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-black/40">Métodos de Pago Habilitados</label>
-                  <div className="grid grid-cols-2 gap-4">
+                  <label className="text-[11px] font-black uppercase tracking-widest text-black/40">Métodos de Pago Habilitados</label>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <button 
                       onClick={() => setForm({ ...form, allowPse: !form.allowPse })}
                       className={`flex items-center justify-between p-4 rounded-2xl border-2 transition-all ${
@@ -160,14 +160,14 @@ export const PaymentLinkModal = ({ isOpen, onClose, onSave, saving }: any) => {
                     <button 
                       onClick={() => setForm({ ...form, allowCard: !form.allowCard })}
                       className={`flex items-center justify-between p-4 rounded-2xl border-2 transition-all ${
-                        form.allowCard ? 'border-purple-500 bg-purple-50 text-purple-900' : 'border-black/5 bg-white text-black/40 opacity-60'
+                        form.allowCard ? 'border-[#7F00DF] bg-purple-50 text-purple-900' : 'border-black/5 bg-white text-black/40 opacity-60'
                       }`}
                     >
                       <div className="flex items-center gap-3">
-                        <CreditCard size={20} className={form.allowCard ? 'text-purple-600' : 'text-black/40'} />
+                        <CreditCard size={20} className={form.allowCard ? 'text-[#7F00DF]' : 'text-black/40'} />
                         <span className="text-[11px] font-black uppercase tracking-widest">Tarjetas</span>
                       </div>
-                      {form.allowCard && <Check size={16} className="text-purple-600" />}
+                      {form.allowCard && <Check size={16} className="text-[#7F00DF]" />}
                     </button>
                   </div>
                 </div>
@@ -175,7 +175,7 @@ export const PaymentLinkModal = ({ isOpen, onClose, onSave, saving }: any) => {
                 <button
                   disabled={!isFormValid || saving}
                   onClick={handleGenerate}
-                  className="mt-4 w-full bg-black text-white py-5 rounded-2xl font-black uppercase tracking-[0.2em] shadow-2xl hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-30 flex items-center justify-center gap-3"
+                  className="mt-2 w-full bg-black text-white py-5 rounded-2xl font-black uppercase tracking-[0.2em] shadow-2xl hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-30 flex items-center justify-center gap-3 shrink-0 mb-4"
                 >
                   {saving ? (
                     <div className="animate-spin h-5 w-5 border-2 border-white border-t-transparent rounded-full" />
@@ -192,20 +192,20 @@ export const PaymentLinkModal = ({ isOpen, onClose, onSave, saving }: any) => {
                 key="success"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="flex flex-col items-center py-10 gap-8"
+                className="flex flex-col items-center py-6 gap-8"
               >
-                <div className="w-24 h-24 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-500">
-                  <Check size={48} strokeWidth={3} />
+                <div className="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-500">
+                  <Check size={40} strokeWidth={3} />
                 </div>
                 
                 <div className="text-center flex flex-col gap-2">
                   <h4 className="text-2xl font-black text-black">Link Generado con Éxito</h4>
-                  <p className="text-black/40 text-sm font-bold uppercase tracking-widest">ID: {generatedLink.split('/').pop()}</p>
+                  <p className="text-black/40 text-[10px] font-black uppercase tracking-widest">ID: {generatedLink.split('/').pop()}</p>
                 </div>
 
                 <div className="w-full flex flex-col gap-3">
-                  <label className="text-[10px] font-black uppercase tracking-widest text-black/40 text-center">URL de Recaudo</label>
-                  <div className="bg-black/5 p-6 rounded-3xl flex items-center justify-between gap-4 border-2 border-dashed border-black/10">
+                  <label className="text-[11px] font-black uppercase tracking-widest text-black/40 text-center">URL de Recaudo</label>
+                  <div className="bg-black/5 p-5 rounded-3xl flex items-center justify-between gap-4 border-2 border-dashed border-black/10">
                     <span className="text-sm font-bold text-black truncate flex-1">{generatedLink}</span>
                     <button 
                       onClick={copyToClipboard}
