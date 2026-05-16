@@ -10,7 +10,7 @@ import {
   LogOut
 } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import logoWhite from '../assets/logo_white.svg';
+import logoWhite from '../assets/logo_pagosx.svg';
 
 interface SidebarProps {
   role: 'SUPERADMIN' | 'MERCHANT';
@@ -52,7 +52,7 @@ export const Sidebar = ({ role }: SidebarProps) => {
     <div className="w-72 h-full bg-gradient-to-b from-[#cc0066] to-[#7a00cc] flex flex-col p-6 overflow-hidden">
       {/* Logo Section */}
       <div className="flex items-center gap-3 px-2 mb-16 shrink-0">
-        <img src={logoWhite} alt="PagoX" className="h-10 w-auto" />
+        <img src={logoWhite} alt="PagoX" className="h-10 w-auto brightness-0 invert" />
       </div>
 
       {/* Navigation Menu */}

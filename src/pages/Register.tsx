@@ -7,7 +7,7 @@ import {
   MapPin, Briefcase, Info, ShieldCheck, AlertCircle
 } from 'lucide-react';
 import { dbService } from '../services/api';
-import logo from '../assets/logo.png';
+import logo from '../assets/logo_pagosx.svg';
 import bgLogin from '../assets/bg-login.jpg';
 
 const STEPS = [

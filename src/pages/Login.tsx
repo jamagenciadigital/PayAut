@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Lock, Mail, ChevronRight, AlertCircle } from 'lucide-react';
-import logo from '../assets/logo.png';
+import logo from '../assets/logo_pagosx.svg';
 import bgLogin from '../assets/bg-login.jpg';
 
 import { dbService } from '../services/api';

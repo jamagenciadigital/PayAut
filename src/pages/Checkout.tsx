@@ -10,7 +10,7 @@ import {
   ArrowLeft,
   Loader2
 } from 'lucide-react';
-import logo from '../assets/logo_white.svg';
+import logo from '../assets/logo_pagosx.svg';
 import bgLogin from '../assets/bg-login.jpg';
 import { dbService } from '../services/api';
 
@@ -119,7 +119,7 @@ export const Checkout = () => {
       
       <div className="w-full max-w-4xl relative z-10 animate-in fade-in zoom-in duration-500">
         <header className="flex flex-col items-center mb-12 gap-4">
-          <img src={logo} alt="PagoX" className="h-12" />
+          <img src={logo} alt="PagoX" className="h-12 brightness-0 invert" />
         </header>
 
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
