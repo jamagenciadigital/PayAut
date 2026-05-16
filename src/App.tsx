@@ -12,6 +12,7 @@ import { SuperadminMerchants } from './pages/SuperadminMerchants';
 import { SuperadminTransactions } from './pages/SuperadminTransactions';
 import { SuperadminReports } from './pages/SuperadminReports';
 import { MerchantSettings } from './pages/MerchantSettings';
+import { MerchantWallet } from './pages/MerchantWallet';
 
 // Placeholder components for other routes
 const Placeholder = ({ title, role }: { title: string, role?: any }) => (
@@ -38,6 +39,7 @@ const App = () => {
         <Route path="/merchant/payouts" element={<Placeholder title="Retiros" role="MERCHANT" />} />
         <Route path="/merchant/keys" element={<Placeholder title="API Keys" role="MERCHANT" />} />
         <Route path="/merchant/settings" element={<MerchantSettings />} />
+        <Route path="/merchant/wallet" element={<MerchantWallet />} />
         
         {/* Admin Routes */}
         <Route path="/admin/dashboard" element={<SuperadminDashboard />} />
