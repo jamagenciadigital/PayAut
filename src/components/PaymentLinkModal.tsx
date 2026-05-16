@@ -48,22 +48,22 @@ export const PaymentLinkModal = ({ isOpen, onClose, onSave, saving }: any) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 bg-black/60 backdrop-blur-md z-[500] flex items-center justify-center p-4"
+      className="fixed inset-0 bg-black/60 backdrop-blur-md z-[9999] flex items-center justify-center p-4"
       onClick={onClose}
     >
       <motion.div
         initial={{ scale: 0.95, opacity: 0, y: 20 }}
         animate={{ scale: 1, opacity: 1, y: 0 }}
         exit={{ scale: 0.95, opacity: 0, y: 20 }}
-        className="bg-white w-full max-w-xl rounded-3xl shadow-2xl overflow-hidden"
+        className="bg-white w-full max-w-xl rounded-[32px] shadow-2xl overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="bg-[#cc0066] p-8 text-white flex justify-between items-center">
+        <div className="bg-[#7F00DF] p-8 text-white flex justify-between items-center">
           <div>
-            <h3 className="text-xl font-black uppercase tracking-tight">
+            <h2 className="text-xl font-black text-white tracking-tighter uppercase">
               {generatedLink ? '¡Link Creado!' : 'Nuevo Link de Pago'}
-            </h3>
-            <p className="text-white/60 text-xs mt-1 font-bold">
+            </h2>
+            <p className="text-white/60 text-[10px] font-black uppercase tracking-[0.2em] mt-1">
               {generatedLink ? 'Ya puedes compartirlo con tus clientes' : 'Configura un nuevo punto de recaudo digital'}
             </p>
           </div>
@@ -90,7 +90,7 @@ export const PaymentLinkModal = ({ isOpen, onClose, onSave, saving }: any) => {
                       value={form.concept}
                       onChange={(e) => setForm({ ...form, concept: e.target.value })}
                       placeholder="Ej: Pago de servicios / Producto ABC"
-                      className="w-full bg-black/5 border-0 p-4 pl-12 rounded-2xl text-sm font-bold text-black focus:outline-none focus:ring-2 focus:ring-[#cc0066]"
+                      className="w-full bg-black/5 border-0 p-4 pl-12 rounded-2xl text-sm font-bold text-black focus:outline-none focus:ring-2 focus:ring-[#7F00DF]"
                     />
                     <FileText size={18} className="absolute left-4 top-4 text-black/20" />
                   </div>
@@ -121,10 +121,10 @@ export const PaymentLinkModal = ({ isOpen, onClose, onSave, saving }: any) => {
                       onChange={(e) => setForm({ ...form, amount: e.target.value })}
                       placeholder={form.isOpenAmount ? "Monto variable" : "0.00"}
                       className={`w-full bg-white border-2 p-5 pl-14 rounded-2xl text-2xl font-black text-black focus:outline-none transition-all ${
-                        form.isOpenAmount ? 'opacity-40 border-dashed border-black/10' : 'border-[#cc0066]/10 focus:border-[#cc0066]'
+                        form.isOpenAmount ? 'opacity-40 border-dashed border-black/10' : 'border-[#7F00DF]/10 focus:border-[#7F00DF]'
                       }`}
                     />
-                    <DollarSign size={24} className={`absolute left-5 top-5 ${form.isOpenAmount ? 'text-black/10' : 'text-[#cc0066]'}`} />
+                    <DollarSign size={24} className={`absolute left-5 top-5 ${form.isOpenAmount ? 'text-black/10' : 'text-[#7F00DF]'}`} />
                   </div>
                 </div>
 
@@ -136,7 +136,7 @@ export const PaymentLinkModal = ({ isOpen, onClose, onSave, saving }: any) => {
                       value={form.returnUrl}
                       onChange={(e) => setForm({ ...form, returnUrl: e.target.value })}
                       placeholder="https://tu-sitio.com/gracias"
-                      className="w-full bg-black/5 border-0 p-4 pl-12 rounded-2xl text-sm font-bold text-black focus:outline-none focus:ring-2 focus:ring-[#cc0066]"
+                      className="w-full bg-black/5 border-0 p-4 pl-12 rounded-2xl text-sm font-bold text-black focus:outline-none focus:ring-2 focus:ring-[#7F00DF]"
                     />
                     <Globe size={18} className="absolute left-4 top-4 text-black/20" />
                   </div>
@@ -218,7 +218,7 @@ export const PaymentLinkModal = ({ isOpen, onClose, onSave, saving }: any) => {
 
                 <button 
                   onClick={onClose}
-                  className="w-full bg-[#cc0066] text-white py-5 rounded-2xl font-black uppercase tracking-[0.2em] shadow-xl hover:scale-105 active:scale-95 transition-all"
+                  className="w-full bg-[#7F00DF] text-white py-5 rounded-2xl font-black uppercase tracking-[0.2em] shadow-xl hover:scale-105 active:scale-95 transition-all"
                 >
                   Finalizar
                 </button>

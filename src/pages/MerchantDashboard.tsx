@@ -33,7 +33,100 @@ import { Layout } from '../components/Layout';
 import pseLogo from '../assets/pse-seeklogo.png';
 import { BuyUsdModal } from '../components/BuyUsdModal';
 import { WithdrawalModal } from '../components/WithdrawalModal';
-import { Wallet } from 'lucide-react';
+import { Wallet, Smartphone, Receipt, CheckCircle } from 'lucide-react';
+
+import logoVisa from '../assets/LogoVisa.png';
+import logoPse from '../assets/LogoPse.png';
+import logoNequi from '../assets/LogoNequi.png';
+import logoBreBe from '../assets/LogoBre-be.png';
+
+const MobileDashboard = ({ merchant, transactions, onBuyUsd, onWithdraw, onNewLink, onSelectTx }: any) => {
+  const paymentMethods = [
+    { name: 'PSE', logo: logoPse },
+    { name: 'Visa', logo: logoVisa },
+    { name: 'Nequi', logo: logoNequi },
+    { name: 'Bre-be', logo: logoBreBe },
+  ];
+
+  return (
+    <div className="block lg:hidden w-full bg-white min-h-screen">
+      <div className="flex flex-col w-full">
+        {/* Top Header Card */}
+        <div className="bg-[#7F00DF] p-8 rounded-b-[40px] shadow-xl flex flex-col items-center text-white pt-16">
+        <p className="text-sm font-medium opacity-80 mb-2">Saldo disponible</p>
+        <h2 className="text-[44px] font-black tracking-tighter mb-6">
+          ${merchant?.balanceAvailable?.toLocaleString() || '0'}
+        </h2>
+        <button 
+          onClick={onWithdraw}
+          className="bg-white text-[#7F00DF] px-8 py-3 rounded-full font-black text-xs uppercase tracking-widest shadow-lg hover:scale-105 transition-transform"
+        >
+          SOLICITAR RETIRO
+        </button>
+      </div>
+
+      {/* Quick Actions Row */}
+      <div className="flex justify-between px-8 mt-8 mb-12">
+        <ActionItem icon={Wallet} label="Comprar USD" onClick={onBuyUsd} />
+        <ActionItem icon={Smartphone} label="Linkpago" onClick={onNewLink} />
+        <ActionItem icon={Receipt} label="Retiros" onClick={onWithdraw} />
+      </div>
+
+      {/* Payment Methods Section */}
+      <div className="px-8 mb-12 text-center">
+        <h3 className="text-sm font-black text-black uppercase tracking-tight mb-8">Tus medios de pago autorizados</h3>
+        <div className="grid grid-cols-4 gap-x-4 gap-y-8">
+          {paymentMethods.map((pm, idx) => (
+            <div key={idx} className="flex items-center justify-center aspect-square p-2 bg-slate-50 rounded-2xl shadow-sm border border-black/[0.03]">
+              <img src={pm.logo} alt={pm.name} className="max-w-full max-h-full object-contain filter grayscale-[0.2] hover:grayscale-0 transition-all" />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Transactions Section */}
+      <div className="px-8 pb-32">
+        <div className="flex justify-between items-center mb-6">
+          <h3 className="text-sm font-black text-black uppercase tracking-tight">Transacciones</h3>
+        </div>
+        <div className="flex flex-col gap-6">
+          {transactions.map((tx: any) => (
+            <div 
+              key={tx.id} 
+              onClick={() => onSelectTx(tx)}
+              className="flex justify-between items-center group cursor-pointer hover:bg-slate-50 p-2 -mx-2 rounded-xl transition-all active:scale-95"
+            >
+              <div className="flex flex-col">
+                <span className="text-[10px] font-black text-black tracking-tight">{String(tx.id).slice(0, 10).toUpperCase()}</span>
+                <span className="text-[10px] font-bold text-black/40 uppercase">
+                  {new Date(tx.createdAt).toLocaleString('es-CO', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' })}
+                </span>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="text-lg font-black text-black">${Number(tx.amount).toLocaleString()}</span>
+                {tx.status === 'APPROVED' ? (
+                  <CheckCircle size={20} className="text-emerald-500" />
+                ) : (
+                  <XCircle size={20} className="text-rose-500" />
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const ActionItem = ({ icon: Icon, label, onClick }: any) => (
+  <button onClick={onClick} className="flex flex-col items-center gap-3 group">
+    <div className="w-16 h-16 rounded-2xl bg-slate-50 border border-black/5 flex items-center justify-center shadow-sm group-hover:bg-[#7F00DF]/10 group-hover:border-[#7F00DF]/20 transition-all">
+      <Icon size={24} className="text-black group-hover:text-[#7F00DF]" />
+    </div>
+    <span className="text-[10px] font-bold text-black/60 uppercase group-hover:text-[#7F00DF]">{label}</span>
+  </button>
+);
 
 const StatCard = ({ title, value, trend, icon: Icon, trendUp }: any) => (
   <div className="bg-white border border-black/5 p-8 rounded-sm shadow-sm flex flex-col gap-4 flex-1">
@@ -68,7 +161,7 @@ const TransactionDetailModal = ({ isOpen, onClose, tx }: any) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 bg-black/60 backdrop-blur-md z-[500] flex items-center justify-end p-0 md:p-6"
+      className="fixed inset-0 bg-black/60 backdrop-blur-md z-[9999] flex items-center justify-end p-0 md:p-6"
       onClick={onClose}
     >
       <motion.div
@@ -80,7 +173,10 @@ const TransactionDetailModal = ({ isOpen, onClose, tx }: any) => {
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header con Saldo Grande */}
-        <div className="bg-black p-10 text-white sticky top-0 z-10">
+        <div className={`p-10 text-white sticky top-0 z-10 transition-colors duration-500 ${
+          tx.status === 'APPROVED' ? 'bg-emerald-600' : 
+          tx.status === 'PENDING' ? 'bg-amber-500' : 'bg-rose-600'
+        }`}>
           <button 
             onClick={onClose}
             className="absolute top-8 right-8 p-2 hover:bg-white/10 rounded-full transition-colors"
@@ -89,27 +185,24 @@ const TransactionDetailModal = ({ isOpen, onClose, tx }: any) => {
           </button>
           
           <div className="flex flex-col gap-2">
-            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/40">Saldo Neto Disponible</span>
-            <h2 className="text-5xl font-black tracking-tighter text-[#7F00DF]">
+            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/80">Saldo Neto Disponible</span>
+            <h2 className="text-5xl font-black tracking-tighter text-white">
               ${Math.round(netAmount).toLocaleString()}
             </h2>
             <div className="flex items-center gap-2 mt-4">
-              <span className={`px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest ${
-                tx.status === 'APPROVED' ? 'bg-emerald-500/20 text-emerald-400' : 
-                tx.status === 'PENDING' ? 'bg-amber-500/20 text-amber-400' : 'bg-indigo-500/20 text-rose-400'
-              }`}>
+              <span className={`px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest bg-white/20 text-white`}>
                 {tx.status === 'APPROVED' ? 'PAGO EXITOSO' : 
                  tx.status === 'PENDING' ? 'PROCESANDO' : 'FALLIDO'}
               </span>
               <span className="text-white/20 text-[10px] font-bold">|</span>
-              <span className="text-white/40 text-[10px] font-bold uppercase tracking-widest">Ref: {String(tx.id).slice(0, 12)}</span>
+              <span className="text-white/80 text-[10px] font-bold uppercase tracking-widest">Ref: {String(tx.id).slice(0, 12)}</span>
             </div>
           </div>
         </div>
 
         <div className="p-10 flex flex-col gap-10">
           {/* Resumen Financiero */}
-          <div className="grid grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             <div className="flex flex-col gap-1 p-6 bg-slate-50 rounded-2xl">
               <span className="text-[9px] font-black text-black/30 uppercase tracking-widest">Monto Pagado</span>
               <span className="text-lg font-black text-black">${amount.toLocaleString()}</span>
@@ -130,7 +223,7 @@ const TransactionDetailModal = ({ isOpen, onClose, tx }: any) => {
               <User size={14} />
               Información del Pagador
             </h4>
-            <div className="grid grid-cols-2 gap-y-8 bg-black/[0.02] p-8 rounded-3xl border border-black/5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-y-6 md:gap-y-8 bg-black/[0.02] p-8 rounded-3xl border border-black/5">
               <DetailItem label="Nombre Completo" value={tx.customer_name || 'Cliente No Identificado'} icon={User} />
               <DetailItem label="Correo Electrónico" value={tx.customerEmail || tx.customer_email} icon={Mail} />
               <DetailItem label="Teléfono de Contacto" value={tx.customer_phone || '---'} icon={Phone} />
@@ -140,7 +233,7 @@ const TransactionDetailModal = ({ isOpen, onClose, tx }: any) => {
           </div>
 
           {/* Detalles del Pago */}
-          <div className="grid grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12">
             <div>
               <h4 className="text-[11px] font-black text-black/20 uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
                 <Hash size={14} />
@@ -252,7 +345,21 @@ export const MerchantDashboard = () => {
 
   return (
     <Layout role="MERCHANT">
-      <div className="p-4 md:p-12 w-full max-w-[1600px] mx-auto bg-[#F2F2F2] min-h-screen">
+      {/* Mobile View */}
+      <MobileDashboard 
+        merchant={merchant}
+        transactions={transactions}
+        onBuyUsd={() => setIsBuyUsdModalOpen(true)}
+        onWithdraw={() => setIsWithdrawalModalOpen(true)}
+        onNewLink={() => setIsLinkModalOpen(true)}
+        onSelectTx={(tx: any) => {
+          setSelectedTx(tx);
+          setIsDetailModalOpen(true);
+        }}
+      />
+
+      {/* Desktop View */}
+      <div className="hidden lg:block p-4 md:p-12 w-full max-w-[1600px] mx-auto bg-[#F2F2F2] min-h-screen">
         <header className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12 pt-12 lg:pt-0">
           <div className="text-left">
             <h1 className="text-2xl md:text-3xl lg:text-4xl font-black text-black uppercase tracking-tighter">Dashboard</h1>
@@ -271,14 +378,14 @@ export const MerchantDashboard = () => {
               onClick={() => setIsWithdrawalModalOpen(true)}
               className="flex-1 sm:flex-none flex items-center justify-center gap-2 bg-black text-white px-3 md:px-6 py-4 rounded-xl font-bold shadow-premium hover:scale-105 transition-all outline-none border-none cursor-pointer whitespace-nowrap text-[9px] md:text-sm uppercase tracking-tighter"
             >
-              <ArrowUpRight size={16} className="hidden sm:block" />
+              <Receipt size={16} className="hidden sm:block" />
               RETIRO
             </button>
             <button 
               onClick={() => setIsLinkModalOpen(true)}
               className="flex-1 sm:flex-none flex items-center justify-center gap-2 bg-[#000051] text-white px-3 md:px-6 py-4 rounded-xl font-bold shadow-premium hover:scale-105 transition-all outline-none border-none cursor-pointer whitespace-nowrap text-[9px] md:text-sm uppercase tracking-tighter"
             >
-              <Plus size={16} className="hidden sm:block" />
+              <Smartphone size={16} className="hidden sm:block" />
               Nuevo Link
             </button>
           </div>
@@ -454,29 +561,33 @@ export const MerchantDashboard = () => {
             }}
           />
         )}
-        <BuyUsdModal 
-          isOpen={isBuyUsdModalOpen} 
-          onClose={() => setIsBuyUsdModalOpen(false)}
-          availableBalanceCop={merchant?.balanceAvailable || 0}
-          onSuccess={(amount) => {
-            setMerchant((prev: any) => ({
-              ...prev,
-              balanceUSD: (prev.balanceUSD || 0) + amount
-            }));
-          }}
-        />
-        <WithdrawalModal
-          isOpen={isWithdrawalModalOpen}
-          onClose={() => setIsWithdrawalModalOpen(false)}
-          availableBalanceCop={merchant?.balanceAvailable || 0}
-          bankInfo={merchant?.bankInfo || { bankName: 'No configurado', accountNumber: '-', accountType: 'SAVINGS' }}
-          onSuccess={(amount) => {
-            setMerchant((prev: any) => ({
-              ...prev,
-              balanceAvailable: (prev.balanceAvailable || 0) - amount
-            }));
-          }}
-        />
+        {isBuyUsdModalOpen && (
+          <BuyUsdModal 
+            isOpen={isBuyUsdModalOpen} 
+            onClose={() => setIsBuyUsdModalOpen(false)}
+            availableBalanceCop={merchant?.balanceAvailable || 0}
+            onSuccess={(amount) => {
+              setMerchant((prev: any) => ({
+                ...prev,
+                balanceUSD: (prev.balanceUSD || 0) + amount
+              }));
+            }}
+          />
+        )}
+        {isWithdrawalModalOpen && (
+          <WithdrawalModal
+            isOpen={isWithdrawalModalOpen}
+            onClose={() => setIsWithdrawalModalOpen(false)}
+            availableBalanceCop={merchant?.balanceAvailable || 0}
+            bankInfo={merchant?.bankInfo || { bankName: 'No configurado', accountNumber: '-', accountType: 'SAVINGS' }}
+            onSuccess={(amount) => {
+              setMerchant((prev: any) => ({
+                ...prev,
+                balanceAvailable: (prev.balanceAvailable || 0) - amount
+              }));
+            }}
+          />
+        )}
       </AnimatePresence>
     </Layout>
   );
