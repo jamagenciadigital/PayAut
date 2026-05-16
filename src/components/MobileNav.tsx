@@ -11,6 +11,7 @@ import {
 
 export const MobileNav = () => {
   const location = useLocation();
+  console.log('MobileNav rendering, role is MERCHANT');
   
   const navItems = [
     { icon: Home, label: 'Inicio', path: '/merchant/dashboard' },
