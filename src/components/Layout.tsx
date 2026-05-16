@@ -17,7 +17,7 @@ export const Layout = ({ children, role }: LayoutProps) => {
       {/* Mobile Menu Toggle */}
       <button 
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        className="lg:hidden fixed top-4 left-4 z-[60] p-2 bg-[#cc0066] text-white rounded-lg shadow-lg"
+        className="lg:hidden fixed top-4 left-4 z-[60] p-2 bg-[#7F00DF] text-white rounded-lg shadow-lg"
       >
         {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
       </button>

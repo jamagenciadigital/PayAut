@@ -62,9 +62,9 @@ export const Login = () => {
         </div>
 
         {error && (
-          <div className="w-full bg-rose-50 border border-rose-100 p-4 rounded-2xl mb-6 flex items-start gap-3">
+          <div className="w-full bg-indigo-50 border border-rose-100 p-4 rounded-2xl mb-6 flex items-start gap-3">
             <AlertCircle className="text-rose-500 shrink-0" size={20} />
-            <p className="text-rose-600 text-xs">{error}</p>
+            <p className="text-[#7F00DF] text-xs">{error}</p>
           </div>
         )}
 
@@ -96,9 +96,9 @@ export const Login = () => {
           <button
             type="submit"
             disabled={loading}
-            className={`w-full text-white py-4 rounded-full font-bold text-sm uppercase tracking-widest hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2 mt-4 shadow-lg cursor-pointer ${loading ? 'opacity-70 cursor-not-allowed' : ''}`}
+            className={`w-full text-white py-4 rounded-full font-bold text-sm uppercase tracking-widest hover:bg-[#7F00DF] active:scale-[0.98] transition-all flex items-center justify-center gap-2 mt-4 shadow-lg cursor-pointer ${loading ? 'opacity-70 cursor-not-allowed' : ''}`}
             style={{
-              backgroundColor: '#B92070',
+              backgroundColor: '#000051',
               borderRadius: '100px'
             }}
           >
@@ -111,7 +111,7 @@ export const Login = () => {
             ¿No tienes cuenta?{' '}
             <button 
               onClick={() => navigate('/register')}
-              className="text-[#B92070] font-bold hover:underline cursor-pointer"
+              className="text-[#000051] hover:text-[#7F00DF] font-bold hover:underline cursor-pointer transition-colors"
             >
               Regístrate
             </button>

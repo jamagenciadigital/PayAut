@@ -7,7 +7,7 @@ import {
   MapPin, Briefcase, Info, ShieldCheck, AlertCircle
 } from 'lucide-react';
 import { dbService } from '../services/api';
-import logo from '../assets/logo_pagosx.svg';
+import logo from '../assets/pagoxwhite.svg';
 import bgLogin from '../assets/bg-login.jpg';
 
 const STEPS = [
@@ -150,14 +150,14 @@ export const Register = () => {
             <React.Fragment key={s.id}>
               <div 
                 className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-500 ${
-                  step >= s.id ? 'bg-[#B92070] text-white shadow-lg' : 'bg-white text-gray-300 shadow-sm'
+                  step >= s.id ? 'bg-[#000051] text-white shadow-lg' : 'bg-white text-gray-300 shadow-sm'
                 }`}
               >
                 {s.icon}
               </div>
               {s.id < 4 && (
                 <div className={`w-8 h-1 rounded-full transition-all duration-500 ${
-                  step > s.id ? 'bg-[#B92070]' : 'bg-white'
+                  step > s.id ? 'bg-[#000051]' : 'bg-white'
                 }`} />
               )}
             </React.Fragment>
@@ -165,7 +165,7 @@ export const Register = () => {
         </div>
       </div>
 
-      <div className="w-full max-w-2xl bg-white/90 backdrop-blur-xl shadow-2xl relative z-10 p-10 overflow-hidden"
+      <div className="w-full max-w-2xl bg-white shadow-2xl relative z-10 p-10 overflow-hidden"
            style={{ borderRadius: '40px' }}>
         
         <AnimatePresence mode="wait">
@@ -219,7 +219,7 @@ export const Register = () => {
                   <select 
                     value={formData.legal.doc_type}
                     onChange={(e) => updateField('legal', 'doc_type', e.target.value)}
-                    className="bg-black/5 border-0 p-4 rounded-2xl text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#B92070]"
+                    className="bg-black/5 border-0 p-4 rounded-2xl text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#000051]"
                   >
                     <option value="C.C">Cédula de Ciudadanía</option>
                     <option value="Pasaporte">Pasaporte</option>
@@ -308,7 +308,7 @@ export const Register = () => {
           <motion.div 
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
-            className="mt-6 flex items-center gap-2 text-rose-500 bg-rose-50 p-3 rounded-xl border border-rose-100"
+            className="mt-6 flex items-center gap-2 text-rose-500 bg-indigo-50 p-3 rounded-xl border border-rose-100"
           >
             <AlertCircle size={16} />
             <span className="text-[11px] font-bold uppercase tracking-tight">{error}</span>
@@ -346,7 +346,7 @@ export const Register = () => {
             <button
               onClick={handleSubmit}
               disabled={loading}
-              className="bg-[#B92070] text-white px-8 py-4 rounded-full font-bold text-sm uppercase tracking-widest flex items-center gap-2 hover:brightness-110 transition-all shadow-xl disabled:opacity-50"
+              className="bg-[#000051] text-white px-8 py-4 rounded-full font-bold text-sm uppercase tracking-widest flex items-center gap-2 hover:bg-[#7F00DF] transition-all shadow-xl disabled:opacity-50"
             >
               {loading ? 'REGISTRANDO...' : 'FINALIZAR REGISTRO'}
               <CheckCircle2 size={18} />
@@ -369,7 +369,7 @@ const InputGroup = ({ label, icon, value, onChange, type = "text", placeholder }
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className={`w-full bg-black/5 border-0 rounded-2xl p-4 text-sm font-bold text-black focus:outline-none focus:ring-2 focus:ring-[#B92070] transition-all ${icon ? 'pl-11' : ''}`}
+        className={`w-full bg-black/5 border-0 rounded-2xl p-4 text-sm font-bold text-black focus:outline-none focus:ring-2 focus:ring-[#000051] transition-all ${icon ? 'pl-11' : ''}`}
       />
     </div>
   </div>
@@ -405,7 +405,7 @@ const FileUpload = ({ label, value, onChange }: any) => {
         <div className={`border-2 border-dashed rounded-3xl p-6 flex flex-col items-center justify-center gap-2 transition-all group-hover:bg-black/5 ${value ? 'border-emerald-200 bg-emerald-50/30' : 'border-black/5'}`}>
           <div className={`p-2 rounded-full ${value ? 'bg-emerald-100 text-emerald-500' : 'bg-black/5 text-black/20'}`}>
             {uploading ? (
-              <div className="w-5 h-5 border-2 border-[#B92070] border-t-transparent rounded-full animate-spin" />
+              <div className="w-5 h-5 border-2 border-[#000051] border-t-transparent rounded-full animate-spin" />
             ) : value ? (
               <CheckCircle2 size={20} />
             ) : (

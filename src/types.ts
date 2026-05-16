@@ -21,6 +21,7 @@ export interface Merchant {
   };
   balanceAvailable: number;
   balancePending: number;
+  balanceUSD?: number;
   subscriptionPlanId: string;
   status: 'ACTIVE' | 'PENDING' | 'SUSPENDED';
 }

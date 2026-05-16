@@ -39,6 +39,7 @@ export const mockMerchant: Merchant = {
   },
   balanceAvailable: 1250000,
   balancePending: 350000,
+  balanceUSD: 0,
   subscriptionPlanId: 'plan-pro',
   status: 'ACTIVE',
 };

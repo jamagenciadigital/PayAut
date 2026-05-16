@@ -24,10 +24,10 @@ const DocLink = ({ label, value, onPreview }: { label: string; value: any; onPre
   const hasFile = value && value !== 'undefined' && value !== 'null' && value !== '#';
   
   return (
-    <div className="bg-white rounded-2xl border border-black/5 hover:border-[#cc0066]/30 transition-all group shadow-sm overflow-hidden">
+    <div className="bg-white rounded-2xl border border-black/5 hover:border-[#7F00DF]/30 transition-all group shadow-sm overflow-hidden">
       <div className="p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div className="flex items-center gap-3 min-w-0">
-          <div className="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center text-black/20 group-hover:text-[#cc0066] group-hover:bg-[#cc0066]/10 shrink-0 transition-colors">
+          <div className="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center text-black/20 group-hover:text-[#7F00DF] group-hover:bg-[#7F00DF]/10 shrink-0 transition-colors">
             <FileText size={20} />
           </div>
           <div className="min-w-0">
@@ -43,7 +43,7 @@ const DocLink = ({ label, value, onPreview }: { label: string; value: any; onPre
             <>
               <button 
                 onClick={() => onPreview(String(value))}
-                className="px-3 py-2 bg-[#cc0066]/10 hover:bg-[#cc0066] text-[#cc0066] hover:text-white rounded-xl transition-all text-[9px] font-black uppercase tracking-widest whitespace-nowrap"
+                className="px-3 py-2 bg-[#000051]/10 hover:bg-[#7F00DF] text-[#7F00DF] hover:text-white rounded-xl transition-all text-[9px] font-black uppercase tracking-widest whitespace-nowrap"
               >
                 Ver
               </button>
@@ -57,7 +57,7 @@ const DocLink = ({ label, value, onPreview }: { label: string; value: any; onPre
               </a>
             </>
           ) : (
-            <span className="text-[8px] font-black text-rose-500/50 uppercase tracking-widest px-3 py-1.5 bg-rose-50 rounded-lg whitespace-nowrap">
+            <span className="text-[8px] font-black text-rose-500/50 uppercase tracking-widest px-3 py-1.5 bg-indigo-50 rounded-lg whitespace-nowrap">
               Pendiente
             </span>
           )}
@@ -88,7 +88,7 @@ const MerchantDetailsModal = ({ isOpen, onClose, merchant, onUpdateStatus, onUpd
       <div className="relative w-full max-w-5xl bg-white rounded-[32px] md:rounded-[40px] shadow-2xl overflow-hidden max-h-[95vh] flex flex-col">
         <div className="p-6 md:p-8 border-b border-black/5 flex justify-between items-center bg-slate-50">
           <div className="flex items-center gap-4">
-            <div className="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-gradient-to-br from-[#cc0066] to-[#7a00cc] flex items-center justify-center text-white font-black text-lg shadow-lg">
+            <div className="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-gradient-to-br from-[#000051] to-[#7F00DF] flex items-center justify-center text-white font-black text-lg shadow-lg">
               {String(merchant.business_name || 'C').charAt(0).toUpperCase()}
             </div>
             <div>
@@ -106,7 +106,7 @@ const MerchantDetailsModal = ({ isOpen, onClose, merchant, onUpdateStatus, onUpd
             <div className="lg:col-span-3 space-y-10 md:space-y-12">
               <section>
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-8 h-8 rounded-xl bg-[#cc0066]/10 flex items-center justify-center text-[#cc0066]">
+                  <div className="w-8 h-8 rounded-xl bg-[#000051]/10 flex items-center justify-center text-[#7F00DF]">
                     <Users size={16} />
                   </div>
                   <h3 className="text-xs font-black text-black uppercase tracking-[0.2em]">Representante Legal</h3>
@@ -126,7 +126,7 @@ const MerchantDetailsModal = ({ isOpen, onClose, merchant, onUpdateStatus, onUpd
 
               <section>
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-8 h-8 rounded-xl bg-[#7a00cc]/10 flex items-center justify-center text-[#7a00cc]">
+                  <div className="w-8 h-8 rounded-xl bg-[#7F00DF]/10 flex items-center justify-center text-[#7F00DF]">
                     <FileText size={16} />
                   </div>
                   <h3 className="text-xs font-black text-black uppercase tracking-[0.2em]">Información Corporativa</h3>
@@ -161,9 +161,9 @@ const MerchantDetailsModal = ({ isOpen, onClose, merchant, onUpdateStatus, onUpd
                 </div>
 
                 {activePreview && (
-                  <div className="mt-4 p-4 bg-white rounded-[24px] border-2 border-[#cc0066]/20 shadow-lg animate-in fade-in slide-in-from-top-4">
+                  <div className="mt-4 p-4 bg-white rounded-[24px] border-2 border-[#7F00DF]/20 shadow-lg animate-in fade-in slide-in-from-top-4">
                     <div className="flex items-center justify-between mb-3 px-2">
-                      <span className="text-[9px] font-black text-[#cc0066] uppercase tracking-widest">Vista Previa Activa</span>
+                      <span className="text-[9px] font-black text-[#7F00DF] uppercase tracking-widest">Vista Previa Activa</span>
                       <button onClick={() => setActivePreview(null)} className="text-black/40 hover:text-black p-1">
                         <XCircle size={14} />
                       </button>
@@ -200,7 +200,7 @@ const MerchantDetailsModal = ({ isOpen, onClose, merchant, onUpdateStatus, onUpd
                       <select 
                         value={selectedPlanId}
                         onChange={(e) => setSelectedPlanId(e.target.value)}
-                        className="w-full pl-6 pr-10 py-4 bg-white border border-black/10 rounded-2xl text-xs font-black uppercase tracking-tight focus:outline-none appearance-none cursor-pointer shadow-sm focus:border-[#cc0066]"
+                        className="w-full pl-6 pr-10 py-4 bg-white border border-black/10 rounded-2xl text-xs font-black uppercase tracking-tight focus:outline-none appearance-none cursor-pointer shadow-sm focus:border-[#7F00DF]"
                       >
                         <option value="">Sin Plan Asignado</option>
                         {Array.isArray(plans) && plans.map((p: any) => (
@@ -220,7 +220,7 @@ const MerchantDetailsModal = ({ isOpen, onClose, merchant, onUpdateStatus, onUpd
                   </div>
                 </div>
 
-                <div className="mt-8 p-6 md:p-8 bg-slate-50 rounded-[32px] border border-black/5 text-center">
+                <div className="mt-8 p-6 md:p-8 bg-slate-50 rounded-[32px] border border-black/5 text-left">
                   <h4 className="text-[10px] font-black text-black/30 uppercase tracking-[0.2em] mb-4">Estado de Validación</h4>
                   <div className={`inline-flex items-center gap-3 px-6 py-2 rounded-full border mb-8 ${
                     merchant.status === 'ACTIVE' 
@@ -237,7 +237,7 @@ const MerchantDetailsModal = ({ isOpen, onClose, merchant, onUpdateStatus, onUpd
                     <button
                       onClick={() => onUpdateStatus(merchant.id, 'ACTIVE')}
                       disabled={saving}
-                      className="w-full bg-[#cc0066] text-white py-4 rounded-2xl font-black text-xs uppercase tracking-widest shadow-xl shadow-[#cc0066]/20 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+                      className="w-full bg-[#000051] text-white py-4 rounded-2xl font-black text-xs uppercase tracking-widest shadow-xl shadow-[#7F00DF]/20 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
                     >
                       {saving ? (
                         <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -252,7 +252,7 @@ const MerchantDetailsModal = ({ isOpen, onClose, merchant, onUpdateStatus, onUpd
                     <button
                       onClick={() => onUpdateStatus(merchant.id, 'PENDING')}
                       disabled={saving}
-                      className="w-full bg-rose-600 text-white py-4 rounded-2xl font-black text-xs uppercase tracking-widest shadow-xl shadow-rose-600/20 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+                      className="w-full bg-[#000051] text-white py-4 rounded-2xl font-black text-xs uppercase tracking-widest shadow-xl shadow-rose-600/20 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
                     >
                       {saving ? (
                         <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -357,7 +357,7 @@ export const SuperadminMerchants = () => {
     return (
       <Layout role="SUPERADMIN">
         <div className="flex items-center justify-center min-h-screen bg-[#F2F2F2]">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#cc0066]" />
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#7F00DF]" />
         </div>
       </Layout>
     );
@@ -365,22 +365,22 @@ export const SuperadminMerchants = () => {
 
   return (
     <Layout role="SUPERADMIN">
-      <div className="p-4 md:p-12 w-full max-w-[1280px] mx-auto bg-[#F2F2F2] min-h-screen">
-        <header className="mb-8 md:mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
-          <div>
+      <div className="p-4 md:p-12 w-full max-w-[1600px] mx-auto bg-[#F2F2F2] min-h-screen">
+        <header className="mb-8 md:mb-12 flex flex-col items-start lg:flex-row lg:items-end justify-between gap-6">
+          <div className="text-left">
             <h1 className="text-3xl md:text-4xl font-black text-black uppercase tracking-tighter mb-2">Comercios</h1>
             <p className="text-black/40 font-bold uppercase tracking-widest text-[10px]">Gestión y validación de registros</p>
           </div>
           
-          <div className="flex flex-wrap items-center gap-4">
-            <div className="relative w-full md:w-auto">
+          <div className="flex items-center justify-end gap-4 w-full lg:w-auto overflow-x-auto no-scrollbar pb-2 lg:pb-0">
+            <div className="relative w-auto">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-black/20" size={18} />
               <input 
                 type="text" 
                 placeholder="Buscar..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full md:w-64 pl-12 pr-6 py-3 bg-white border border-black/5 rounded-2xl text-sm font-bold focus:outline-none focus:border-[#cc0066] transition-all shadow-sm"
+                className="w-48 pl-12 pr-6 py-3 bg-white border border-black/5 rounded-2xl text-sm font-bold focus:outline-none focus:border-[#7F00DF] transition-all shadow-sm"
               />
             </div>
             
@@ -391,7 +391,7 @@ export const SuperadminMerchants = () => {
                   onClick={() => setFilterStatus(status)}
                   className={`px-4 py-2 rounded-xl text-[9px] md:text-[10px] font-black uppercase tracking-widest transition-all whitespace-nowrap ${
                     filterStatus === status 
-                      ? 'bg-[#cc0066] text-white shadow-lg' 
+                      ? 'bg-[#000051] text-white shadow-lg' 
                       : 'text-black/40 hover:text-black'
                   }`}
                 >
@@ -420,7 +420,7 @@ export const SuperadminMerchants = () => {
                     <tr key={merchant.id} className="hover:bg-slate-50/50 transition-colors group">
                       <td className="px-8 py-6">
                         <div className="flex items-center gap-4">
-                          <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-[#cc0066] to-[#7a00cc] flex items-center justify-center text-white font-black text-xs shadow-lg">
+                          <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-[#000051] to-[#7F00DF] flex items-center justify-center text-white font-black text-xs shadow-lg">
                             {String(merchant.business_name || 'C').charAt(0).toUpperCase()}
                           </div>
                           <div>
@@ -436,8 +436,8 @@ export const SuperadminMerchants = () => {
                       <td className="px-8 py-6">
                         <p className="text-sm font-bold text-black uppercase tracking-tighter">{merchant.tax_id || '---'}</p>
                         <div className="flex items-center gap-1.5 mt-1">
-                          <CreditCard size={10} className="text-[#cc0066]" />
-                          <p className="text-[9px] font-black text-[#cc0066] uppercase tracking-widest">{merchant.plan_name || 'Sin Plan'}</p>
+                          <CreditCard size={10} className="text-[#7F00DF]" />
+                          <p className="text-[9px] font-black text-[#7F00DF] uppercase tracking-widest">{merchant.plan_name || 'Sin Plan'}</p>
                         </div>
                       </td>
                       <td className="px-8 py-6">
@@ -457,7 +457,7 @@ export const SuperadminMerchants = () => {
                               setSelectedMerchant(merchant);
                               setIsModalOpen(true);
                             }}
-                            className="p-3 bg-slate-100 hover:bg-[#cc0066] hover:text-white rounded-2xl transition-all duration-300 group/btn"
+                            className="p-3 bg-slate-100 hover:bg-[#7F00DF] hover:text-white rounded-2xl transition-all duration-300 group/btn"
                             title="Ver Comercio"
                           >
                             <Eye size={18} />
@@ -474,7 +474,7 @@ export const SuperadminMerchants = () => {
                           ) : (
                             <button
                               onClick={() => handleUpdateStatus(merchant.id, 'PENDING')}
-                              className="p-3 bg-rose-50 text-rose-600 hover:bg-rose-600 hover:text-white rounded-2xl transition-all duration-300 group/btn"
+                              className="p-3 bg-indigo-50 text-[#7F00DF] hover:bg-[#000051] hover:text-white rounded-2xl transition-all duration-300 group/btn"
                               title="Desactivar Comercio"
                             >
                               <XCircle size={18} />
@@ -486,7 +486,7 @@ export const SuperadminMerchants = () => {
                   ))
                 ) : (
                   <tr>
-                    <td colSpan={5} className="px-8 py-20 text-center">
+                    <td colSpan={5} className="px-8 py-20 text-left">
                       <div className="flex flex-col items-center gap-4">
                         <div className="w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center">
                           <Users className="text-black/10" size={32} />

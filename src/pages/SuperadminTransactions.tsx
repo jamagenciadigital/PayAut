@@ -73,13 +73,13 @@ export const SuperadminTransactions = () => {
   return (
     <Layout role="SUPERADMIN">
       <div className="p-4 md:p-12 w-full max-w-[1600px] mx-auto flex flex-col gap-10 bg-[#F2F2F2] min-h-screen">
-        <header className="flex flex-col md:flex-row md:items-end justify-between gap-6 pt-12 lg:pt-0">
-          <div>
-            <h1 className="text-2xl md:text-3xl lg:text-4xl font-black text-black uppercase tracking-tighter">Historial Transaccional</h1>
-            <p className="text-black/40 text-[10px] font-black uppercase tracking-[0.2em] mt-2">Monitoreo de flujos y conciliación</p>
+        <header className="mb-8 md:mb-12 flex flex-col items-start lg:flex-row lg:items-end justify-between gap-6">
+          <div className="text-left">
+            <h1 className="text-3xl md:text-4xl font-black text-black uppercase tracking-tighter mb-2">Historial Transaccional</h1>
+            <p className="text-black/40 font-bold uppercase tracking-widest text-[10px]">Monitoreo de flujos y conciliación</p>
           </div>
           
-          <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-4">
+          <div className="flex items-center justify-end gap-4 w-full lg:w-auto overflow-x-auto no-scrollbar pb-2 lg:pb-0">
             <div className="relative w-full sm:w-auto">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-black/20" size={18} />
               <input 
@@ -87,12 +87,12 @@ export const SuperadminTransactions = () => {
                 placeholder="Buscar por cliente o ID..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-12 pr-6 py-4 bg-white border border-black/5 rounded-2xl text-sm font-bold focus:outline-none focus:border-[#cc0066] transition-all w-full sm:w-64 shadow-sm"
+                className="pl-12 pr-6 py-4 bg-white border border-black/5 rounded-2xl text-sm font-bold focus:outline-none focus:border-[#7F00DF] transition-all w-48 shadow-sm"
               />
             </div>
             
             <div className="relative w-full sm:w-auto">
-              <Filter className="absolute left-4 top-1/2 -translate-y-1/2 text-[#cc0066]" size={18} />
+              <Filter className="absolute left-4 top-1/2 -translate-y-1/2 text-[#7F00DF]" size={18} />
               <select 
                 value={merchantFilter}
                 onChange={(e) => setMerchantFilter(e.target.value)}
@@ -120,14 +120,14 @@ export const SuperadminTransactions = () => {
             title="Saldo Rechazado" 
             value={formatCurrency(stats.rejected)} 
             icon={XCircle} 
-            color="bg-rose-500" 
+            color="bg-indigo-500" 
             delay={0.2}
           />
           <StatCard 
             title="Saldo Disponible" 
             value={formatCurrency(stats.available)} 
             icon={Wallet} 
-            color="bg-[#cc0066]" 
+            color="bg-[#000051]" 
             delay={0.3}
           />
         </div>
@@ -184,7 +184,7 @@ export const SuperadminTransactions = () => {
                             {isPse ? (
                               <img src={pseLogo} alt="PSE" className="w-8 h-8 object-contain" />
                             ) : (
-                              <CreditCard size={14} className="text-[#7a00cc]" />
+                              <CreditCard size={14} className="text-[#7F00DF]" />
                             )}
                             <span className="text-[10px] font-black text-black/60 uppercase">{isPse ? 'PSE' : 'Tarjeta'}</span>
                           </div>
@@ -197,14 +197,14 @@ export const SuperadminTransactions = () => {
                           <div className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest ${
                             tx.status === 'SUCCESS' 
                               ? 'bg-emerald-50 text-emerald-600 border border-emerald-100' 
-                              : 'bg-rose-50 text-rose-600 border border-rose-100'
+                              : 'bg-indigo-50 text-[#7F00DF] border border-rose-100'
                           }`}>
-                            <div className={`w-1.5 h-1.5 rounded-full ${tx.status === 'SUCCESS' ? 'bg-emerald-600' : 'bg-rose-600'}`} />
+                            <div className={`w-1.5 h-1.5 rounded-full ${tx.status === 'SUCCESS' ? 'bg-emerald-600' : 'bg-[#000051]'}`} />
                             {tx.status === 'SUCCESS' ? 'Aprobado' : 'Rechazado'}
                           </div>
                         </td>
                         <td className="px-8 py-6 text-right">
-                          <p className={`text-sm font-black ${tx.status === 'SUCCESS' ? 'text-[#cc0066]' : 'text-black/20'}`}>
+                          <p className={`text-sm font-black ${tx.status === 'SUCCESS' ? 'text-[#7F00DF]' : 'text-black/20'}`}>
                             {formatCurrency(tx.status === 'SUCCESS' ? netAmount : 0)}
                           </p>
                           <p className="text-[9px] font-bold text-black/30 uppercase tracking-widest">Saldo</p>
@@ -220,8 +220,8 @@ export const SuperadminTransactions = () => {
           <div className="p-8 border-t border-black/5 bg-slate-50 flex items-center justify-between">
             <p className="text-[10px] font-bold text-black/40 uppercase tracking-widest">Mostrando 6 de 128 transacciones</p>
             <div className="flex gap-2">
-              <button className="px-4 py-2 bg-white border border-black/5 rounded-xl text-[10px] font-black text-black/30 uppercase tracking-widest hover:text-[#cc0066] transition-colors">Anterior</button>
-              <button className="px-4 py-2 bg-white border border-black/5 rounded-xl text-[10px] font-black text-black uppercase tracking-widest hover:border-[#cc0066] transition-colors shadow-sm">Siguiente</button>
+              <button className="px-4 py-2 bg-white border border-black/5 rounded-xl text-[10px] font-black text-black/30 uppercase tracking-widest hover:text-[#7F00DF] transition-colors">Anterior</button>
+              <button className="px-4 py-2 bg-white border border-black/5 rounded-xl text-[10px] font-black text-black uppercase tracking-widest hover:border-[#7F00DF] transition-colors shadow-sm">Siguiente</button>
             </div>
           </div>
         </div>

@@ -19,6 +19,9 @@ import { currentUser } from '../mockData';
 import pseLogo from '../assets/pse-seeklogo.png';
 
 export const PaymentLinks = () => {
+  const userStr = localStorage.getItem('currentUser');
+  const user = userStr ? JSON.parse(userStr) : currentUser;
+  
   const [links, setLinks] = useState<any[]>([]);
   const [merchant, setMerchant] = useState<any>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -32,7 +35,7 @@ export const PaymentLinks = () => {
       try {
         // En una app real, esto vendría del contexto de Auth
         // Primero buscamos el merchant vinculado al usuario actual
-        const merch = await dbService.getMerchantByUserId(currentUser.id);
+        const merch = await dbService.getMerchantByUserId(user.id);
         if (merch) {
           setMerchant(merch);
           const data = await dbService.getPaymentLinks(merch.id);
@@ -63,14 +66,14 @@ export const PaymentLinks = () => {
     <Layout role="MERCHANT">
       <div className="p-4 md:p-12 w-full max-w-[1600px] mx-auto bg-[#F2F2F2] min-h-screen">
         <header className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12 pt-12 lg:pt-0">
-          <div>
-            <h1 className="text-2xl md:text-3xl font-bold text-black">Links de Pago</h1>
-            <p className="text-black/60">Gestiona y monitorea tus puntos de recaudo digital</p>
+          <div className="text-left">
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-black text-black uppercase tracking-tighter">Links de Pago</h1>
+            <p className="text-black/40 text-[10px] font-black uppercase tracking-[0.2em] mt-2">Gestiona y monitorea tus puntos de recaudo digital</p>
           </div>
           
           <button 
             onClick={() => setIsModalOpen(true)}
-            className="w-full md:w-auto flex items-center justify-center gap-2 bg-[#cc0066] text-white px-8 py-4 rounded-xl font-bold shadow-premium hover:scale-105 transition-all outline-none border-none cursor-pointer"
+            className="w-full md:w-auto flex items-center justify-center gap-2 bg-[#000051] text-white px-8 py-4 rounded-xl font-bold shadow-premium hover:scale-105 transition-all outline-none border-none cursor-pointer"
           >
             <Plus size={20} />
             Nuevo Link de Pago
@@ -85,7 +88,7 @@ export const PaymentLinks = () => {
               placeholder="Buscar por concepto o ID..." 
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-white border border-black/5 p-4 pl-12 rounded-xl text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#cc0066]/20 transition-all"
+              className="w-full bg-white border border-black/5 p-4 pl-12 rounded-xl text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#7F00DF]/20 transition-all"
             />
             <Search size={18} className="absolute left-4 top-4 text-black/20" />
           </div>
@@ -100,7 +103,7 @@ export const PaymentLinks = () => {
           <div className="overflow-x-auto">
             {loading ? (
               <div className="py-20 flex flex-col items-center justify-center gap-4">
-                <div className="animate-spin h-8 w-8 border-4 border-[#cc0066] border-t-transparent rounded-full" />
+                <div className="animate-spin h-8 w-8 border-4 border-[#7F00DF] border-t-transparent rounded-full" />
                 <p className="text-[10px] font-black uppercase tracking-widest text-black/20">Cargando datos reales...</p>
               </div>
             ) : filteredLinks.length === 0 ? (
@@ -147,9 +150,9 @@ export const PaymentLinks = () => {
                       </td>
                       <td className="py-6">
                         <span className={`px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-wider flex items-center gap-2 w-fit ${
-                          link.status === 'ACTIVE' ? 'bg-emerald-500/10 text-emerald-600' : 'bg-rose-500/10 text-rose-600'
+                          link.status === 'ACTIVE' ? 'bg-emerald-500/10 text-emerald-600' : 'bg-indigo-500/10 text-[#7F00DF]'
                         }`}>
-                          <div className={`w-1.5 h-1.5 rounded-full ${link.status === 'ACTIVE' ? 'bg-emerald-600' : 'bg-rose-600'}`} />
+                          <div className={`w-1.5 h-1.5 rounded-full ${link.status === 'ACTIVE' ? 'bg-emerald-600' : 'bg-[#000051]'}`} />
                           {link.status === 'ACTIVE' ? 'Activo' : 'Inactivo'}
                         </span>
                       </td>
@@ -163,7 +166,7 @@ export const PaymentLinks = () => {
                         <div className="flex justify-end gap-2">
                           <button 
                             onClick={() => handleCopy(link.slug)}
-                            className={`p-2 rounded-lg transition-all ${copiedId === link.slug ? 'bg-emerald-500 text-white' : 'text-black/20 hover:text-[#cc0066] hover:bg-rose-50'}`}
+                            className={`p-2 rounded-lg transition-all ${copiedId === link.slug ? 'bg-emerald-500 text-white' : 'text-black/20 hover:text-[#7F00DF] hover:bg-indigo-50'}`}
                             title="Copiar Link"
                           >
                             {copiedId === link.slug ? <Check size={18} /> : <Copy size={18} />}
@@ -175,7 +178,7 @@ export const PaymentLinks = () => {
                           >
                             <ExternalLink size={18} />
                           </button>
-                          <button className="p-2 text-black/20 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-colors" title="Eliminar">
+                          <button className="p-2 text-black/20 hover:text-[#7F00DF] hover:bg-indigo-50 rounded-lg transition-colors" title="Eliminar">
                             <Trash2 size={18} />
                           </button>
                         </div>

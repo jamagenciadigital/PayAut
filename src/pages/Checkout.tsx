@@ -144,7 +144,7 @@ export const Checkout = () => {
                         value={customAmount}
                         onChange={(e) => setCustomAmount(e.target.value)}
                         placeholder="0.00"
-                        className="w-full bg-white border border-black/10 rounded-xl pl-10 pr-5 py-4 text-black text-2xl font-bold focus:outline-none focus:border-[#B92070] transition-all shadow-sm"
+                        className="w-full bg-white border border-black/10 rounded-xl pl-10 pr-5 py-4 text-black text-2xl font-bold focus:outline-none focus:border-[#000051] transition-all shadow-sm"
                       />
                     </div>
                   </div>
@@ -169,7 +169,7 @@ export const Checkout = () => {
                 <button 
                   onClick={() => setPaymentMethod('CARD')}
                   className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl transition-all font-bold ${
-                    paymentMethod === 'CARD' ? 'bg-[#B92070] text-white shadow-lg' : 'text-black/40 hover:text-black/60'
+                    paymentMethod === 'CARD' ? 'bg-[#000051] text-white shadow-lg' : 'text-black/40 hover:text-black/60'
                   }`}
                 >
                   <CreditCard size={18} />
@@ -180,7 +180,7 @@ export const Checkout = () => {
                 <button 
                   onClick={() => setPaymentMethod('PSE')}
                   className={`flex-1 flex items-center justify-center gap-2 py-3 rounded-xl transition-all font-bold ${
-                    paymentMethod === 'PSE' ? 'bg-[#B92070] text-white shadow-lg' : 'text-black/40 hover:text-black/60'
+                    paymentMethod === 'PSE' ? 'bg-[#000051] text-white shadow-lg' : 'text-black/40 hover:text-black/60'
                   }`}
                 >
                   <Building2 size={18} />
@@ -214,7 +214,7 @@ export const Checkout = () => {
                       <input 
                         type="password" 
                         placeholder="***"
-                        className="w-full bg-white border border-black/10 rounded-2xl px-5 py-4 text-black focus:outline-none focus:border-[#B92070] transition-all shadow-sm"
+                        className="w-full bg-white border border-black/10 rounded-2xl px-5 py-4 text-black focus:outline-none focus:border-[#000051] transition-all shadow-sm"
                       />
                     </div>
                   </div>
@@ -243,8 +243,7 @@ export const Checkout = () => {
               <button 
                 type="submit"
                 disabled={linkData.is_open_amount && !customAmount}
-                style={{ backgroundColor: '#B92070' }}
-                className="w-full text-white py-5 rounded-2xl font-bold text-lg hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 mt-4 disabled:opacity-50 disabled:cursor-not-allowed shadow-xl shadow-[#B92070]/20"
+                className="w-full text-white py-5 rounded-2xl font-bold text-lg bg-[#000051] hover:bg-[#7F00DF] active:scale-[0.98] transition-all flex items-center justify-center gap-2 mt-4 disabled:opacity-50 disabled:cursor-not-allowed shadow-xl shadow-[#000051]/20"
               >
                 Pagar Ahora
                 <ChevronRight size={20} />

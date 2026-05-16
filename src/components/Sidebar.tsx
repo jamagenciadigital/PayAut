@@ -49,7 +49,7 @@ export const Sidebar = ({ role }: SidebarProps) => {
   const userInitials = userName.split(' ').map((n: string) => n[0]).join('').toUpperCase().substring(0, 2);
 
   return (
-    <div className="w-72 h-full bg-gradient-to-b from-[#cc0066] to-[#7a00cc] flex flex-col p-6 overflow-hidden">
+    <div className="w-72 h-full bg-gradient-to-b from-[#7F00DF] to-[#000051] flex flex-col p-6 overflow-hidden">
       {/* Logo Section */}
       <div className="flex items-center gap-3 px-2 mb-16 shrink-0">
         <img src={logoWhite} alt="PagoX" className="h-10 w-auto brightness-0 invert" />
@@ -65,11 +65,11 @@ export const Sidebar = ({ role }: SidebarProps) => {
               to={item.path}
               className={`flex items-center gap-4 px-5 py-3.5 rounded-l-2xl transition-all duration-300 group relative no-underline ${
                 isActive 
-                  ? 'bg-[#F2F2F2] text-[#cc0066] translate-x-4' 
+                  ? 'bg-[#F2F2F2] text-[#7F00DF] translate-x-4' 
                   : 'text-white hover:bg-white/10'
               }`}
             >
-              <item.icon size={20} className={isActive ? 'text-[#cc0066]' : 'text-white'} />
+              <item.icon size={20} className={isActive ? 'text-[#7F00DF]' : 'text-white'} />
               <span className={`text-sm font-semibold ${isActive ? 'font-bold' : ''}`}>{item.label}</span>
               
               {isActive && (

@@ -19,16 +19,16 @@ const GlobalStat = ({ title, value, delay, icon: Icon }: any) => (
     initial={{ opacity: 0, y: 10 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ delay, duration: 0.4 }}
-    className="bg-white border border-black/5 p-8 md:p-10 rounded-3xl shadow-sm flex flex-col gap-6 flex-1 relative overflow-hidden group hover:shadow-xl hover:shadow-[#cc0066]/5 transition-all"
+    className="bg-white border border-black/5 p-8 md:p-10 rounded-3xl shadow-sm flex flex-col gap-6 flex-1 relative overflow-hidden group hover:shadow-xl hover:shadow-[#7F00DF]/5 transition-all"
   >
     <div className="flex justify-between items-start">
-      <div className="p-3 bg-black/5 rounded-2xl group-hover:bg-[#cc0066]/10 transition-colors">
-        <Icon className="text-black/40 group-hover:text-[#cc0066] transition-colors" size={20} />
+      <div className="p-3 bg-black/5 rounded-2xl group-hover:bg-[#7F00DF]/10 transition-colors">
+        <Icon className="text-black/40 group-hover:text-[#7F00DF] transition-colors" size={20} />
       </div>
     </div>
     <div className="flex flex-col gap-2">
       <p className="text-black/40 font-black uppercase tracking-[0.2em] text-[9px]">{title}</p>
-      <h3 className="text-3xl md:text-4xl font-black text-black group-hover:text-[#cc0066] tracking-tighter leading-none transition-colors">
+      <h3 className="text-3xl md:text-4xl font-black text-black group-hover:text-[#7F00DF] tracking-tighter leading-none transition-colors">
         {value}
       </h3>
     </div>
@@ -104,7 +104,7 @@ export const SuperadminDashboard = () => {
                 <h2 className="text-xl font-black text-black uppercase tracking-tight">Transacciones Recientes</h2>
                 <p className="text-[10px] font-black text-black/40 uppercase tracking-widest mt-1">Últimos movimientos de todos los comercios</p>
               </div>
-              <button className="flex items-center gap-2 text-[10px] font-black text-[#cc0066] uppercase tracking-widest hover:translate-x-1 transition-transform">
+              <button className="flex items-center gap-2 text-[10px] font-black text-[#7F00DF] uppercase tracking-widest hover:translate-x-1 transition-transform">
                 Ver Todo <ChevronRight size={14} />
               </button>
             </div>
@@ -135,7 +135,7 @@ export const SuperadminDashboard = () => {
                         </td>
                         <td className="py-6 px-4">
                           <div className="flex items-center gap-3">
-                            <div className="w-8 h-8 rounded-xl bg-slate-100 flex items-center justify-center text-[#cc0066] font-black text-[10px]">
+                            <div className="w-8 h-8 rounded-xl bg-slate-100 flex items-center justify-center text-[#7F00DF] font-black text-[10px]">
                               {tx.merchant_name?.charAt(0)}
                             </div>
                             <span className="text-xs font-black text-black uppercase tracking-tight">{tx.merchant_name}</span>
@@ -163,7 +163,7 @@ export const SuperadminDashboard = () => {
                             {tx.payment_method === 'PSE' ? (
                               <img src={pseLogo} alt="PSE" className="w-8 h-8 object-contain" />
                             ) : (
-                              <CreditCard size={14} className="text-[#7a00cc]" />
+                              <CreditCard size={14} className="text-[#7F00DF]" />
                             )}
                             <span className="text-[10px] font-black uppercase tracking-widest">{tx.payment_method === 'PSE' ? 'PSE' : 'Tarjeta'}</span>
                           </div>

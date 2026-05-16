@@ -97,7 +97,7 @@ export const MerchantSettings = () => {
     return (
       <Layout role="MERCHANT">
         <div className="flex items-center justify-center min-h-[60vh]">
-          <div className="w-12 h-12 border-4 border-[#cc0066]/20 border-t-[#cc0066] rounded-full animate-spin" />
+          <div className="w-12 h-12 border-4 border-[#7F00DF]/20 border-t-[#7F00DF] rounded-full animate-spin" />
         </div>
       </Layout>
     );
@@ -105,10 +105,10 @@ export const MerchantSettings = () => {
 
   return (
     <Layout role="MERCHANT">
-      <div className="p-4 md:p-8 w-full max-w-[1400px] mx-auto flex flex-col min-h-screen">
-        <div className="mb-8 pt-12 lg:pt-0">
-          <p className="text-[10px] font-black text-[#cc0066] uppercase tracking-[0.3em] mb-2">Ajustes / {sections.find(s => s.id === activeSection)?.label}</p>
-          <h1 className="text-2xl md:text-3xl font-black text-black uppercase tracking-tight">Configuración del Comercio</h1>
+      <div className="p-4 md:p-12 w-full max-w-[1600px] mx-auto flex flex-col bg-[#F2F2F2] min-h-screen">
+        <div className="mb-12 pt-12 lg:pt-0 text-left">
+          <p className="text-black/40 text-[10px] font-black uppercase tracking-[0.2em] mb-2">Ajustes / {sections.find(s => s.id === activeSection)?.label}</p>
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-black text-black uppercase tracking-tighter">Configuración del Comercio</h1>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-20 lg:mb-0">
@@ -127,7 +127,7 @@ export const MerchantSettings = () => {
                 >
                   <div className={`w-10 h-10 lg:w-12 lg:h-12 rounded-xl flex items-center justify-center transition-all ${
                     activeSection === section.id 
-                      ? 'bg-gradient-to-br from-[#cc0066] to-[#7a00cc] text-white shadow-lg shadow-[#cc0066]/20' 
+                      ? 'bg-gradient-to-br from-[#000051] to-[#7F00DF] text-white shadow-lg shadow-[#7F00DF]/20' 
                       : 'bg-slate-100 text-black/20 group-hover:bg-white group-hover:text-black/40'
                   }`}>
                     <section.icon size={18} className="lg:size-5" />
@@ -379,7 +379,7 @@ export const MerchantSettings = () => {
                         onChange={handleInputChange} 
                       />
                       <div className="md:col-span-2 p-6 bg-slate-50 rounded-3xl border border-black/5">
-                        <div className="flex items-center gap-4 text-[#cc0066]">
+                        <div className="flex items-center gap-4 text-[#7F00DF]">
                           <AlertCircle size={20} />
                           <p className="text-[10px] font-black uppercase tracking-widest">Atención: Algunos cambios requieren validación del administrador.</p>
                         </div>
@@ -425,7 +425,7 @@ export const MerchantSettings = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 100 }}
             className={`fixed bottom-8 right-8 z-[9999] px-6 py-4 rounded-2xl shadow-2xl flex items-center gap-3 ${
-              notification.type === 'success' ? 'bg-emerald-600 text-white' : 'bg-rose-600 text-white'
+              notification.type === 'success' ? 'bg-emerald-600 text-white' : 'bg-[#000051] text-white'
             }`}
           >
             {notification.type === 'success' ? <CheckCircle2 size={20} /> : <AlertCircle size={20} />}
@@ -439,7 +439,7 @@ export const MerchantSettings = () => {
 
 const InputField = ({ label, name, type = 'text', value, onChange, required, placeholder }: any) => (
   <div className="space-y-2 group">
-    <label className="text-[9px] font-black text-black/30 uppercase tracking-[0.2em] px-2 block group-focus-within:text-[#cc0066] transition-colors">
+    <label className="text-[9px] font-black text-black/30 uppercase tracking-[0.2em] px-2 block group-focus-within:text-[#7F00DF] transition-colors">
       {label} {required && <span className="text-rose-500">*</span>}
     </label>
     <input
@@ -449,14 +449,14 @@ const InputField = ({ label, name, type = 'text', value, onChange, required, pla
       onChange={onChange}
       required={required}
       placeholder={placeholder}
-      className="w-full px-8 py-5 bg-slate-50 border border-black/10 rounded-2xl text-xs font-bold text-black focus:outline-none focus:ring-4 focus:ring-[#cc0066]/10 focus:border-[#cc0066] focus:bg-white transition-all shadow-sm"
+      className="w-full px-8 py-5 bg-slate-50 border border-black/10 rounded-2xl text-xs font-bold text-black focus:outline-none focus:ring-4 focus:ring-[#7F00DF]/10 focus:border-[#7F00DF] focus:bg-white transition-all shadow-sm"
     />
   </div>
 );
 
 const SelectField = ({ label, name, value, onChange, options, required }: any) => (
   <div className="space-y-2 group">
-    <label className="text-[9px] font-black text-black/30 uppercase tracking-[0.2em] px-2 block group-focus-within:text-[#cc0066] transition-colors">
+    <label className="text-[9px] font-black text-black/30 uppercase tracking-[0.2em] px-2 block group-focus-within:text-[#7F00DF] transition-colors">
       {label} {required && <span className="text-rose-500">*</span>}
     </label>
     <select
@@ -464,7 +464,7 @@ const SelectField = ({ label, name, value, onChange, options, required }: any) =
       value={value || ''}
       onChange={onChange}
       required={required}
-      className="w-full px-8 py-5 bg-slate-50 border border-black/10 rounded-2xl text-xs font-bold text-black focus:outline-none focus:ring-4 focus:ring-[#cc0066]/10 focus:border-[#cc0066] focus:bg-white transition-all shadow-sm appearance-none cursor-pointer"
+      className="w-full px-8 py-5 bg-slate-50 border border-black/10 rounded-2xl text-xs font-bold text-black focus:outline-none focus:ring-4 focus:ring-[#7F00DF]/10 focus:border-[#7F00DF] focus:bg-white transition-all shadow-sm appearance-none cursor-pointer"
     >
       {options.map((opt: any) => (
         <option key={opt.value} value={opt.value}>{opt.label}</option>
@@ -474,9 +474,9 @@ const SelectField = ({ label, name, value, onChange, options, required }: any) =
 );
 
 const DocPreviewCard = ({ label, value }: { label: string, value: string }) => (
-  <div className="p-6 bg-white rounded-3xl border border-black/10 flex items-center justify-between group hover:border-[#cc0066]/30 transition-all shadow-sm">
+  <div className="p-6 bg-white rounded-3xl border border-black/10 flex items-center justify-between group hover:border-[#7F00DF]/30 transition-all shadow-sm">
     <div className="flex items-center gap-6 min-w-0">
-      <div className="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center text-black/20 group-hover:text-[#cc0066] group-hover:bg-[#cc0066]/10 transition-colors">
+      <div className="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center text-black/20 group-hover:text-[#7F00DF] group-hover:bg-[#7F00DF]/10 transition-colors">
         <FileText size={20} />
       </div>
       <div className="min-w-0">

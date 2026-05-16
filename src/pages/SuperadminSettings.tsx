@@ -53,7 +53,7 @@ const Toggle = ({
     <button
       onClick={() => onChange(!enabled)}
       className={`w-12 h-6 rounded-full transition-colors relative ${
-        enabled ? 'bg-[#cc0066]' : 'bg-black/10'
+        enabled ? 'bg-[#000051]' : 'bg-black/10'
       }`}
     >
       <div
@@ -158,7 +158,7 @@ const PlanModal = ({
               value={form.name}
               onChange={(e) => set('name', e.target.value)}
               placeholder="Ej: Plan Corporativo"
-              className="w-full bg-black/5 border-0 p-4 rounded-sm text-sm font-bold text-black focus:outline-none focus:ring-2 focus:ring-[#cc0066]"
+              className="w-full bg-black/5 border-0 p-4 rounded-sm text-sm font-bold text-black focus:outline-none focus:ring-2 focus:ring-[#7F00DF]"
             />
           </div>
 
@@ -174,7 +174,7 @@ const PlanModal = ({
                 step="1000"
                 value={form.monthly_price}
                 onChange={(e) => set('monthly_price', e.target.value)}
-                className="w-full bg-black/5 border-0 p-4 rounded-sm text-sm font-bold text-black focus:outline-none focus:ring-2 focus:ring-[#cc0066]"
+                className="w-full bg-black/5 border-0 p-4 rounded-sm text-sm font-bold text-black focus:outline-none focus:ring-2 focus:ring-[#7F00DF]"
               />
             </div>
             <div className="flex flex-col gap-2">
@@ -188,7 +188,7 @@ const PlanModal = ({
                 step="0.1"
                 value={form.card_retefuente_percent}
                 onChange={(e) => set('card_retefuente_percent', e.target.value)}
-                className="w-full bg-rose-50 border-0 p-4 rounded-sm text-sm font-bold text-rose-600 focus:outline-none focus:ring-2 focus:ring-rose-300"
+                className="w-full bg-indigo-50 border-0 p-4 rounded-sm text-sm font-bold text-[#7F00DF] focus:outline-none focus:ring-2 focus:ring-[#7F00DF]/20"
               />
               <p className="text-[10px] text-black/30">Solo aplica a Tarjeta Crédito</p>
             </div>
@@ -197,7 +197,7 @@ const PlanModal = ({
           {/* PSE + Card fee */}
           <div className="grid grid-cols-2 gap-4">
             <div className="flex flex-col gap-2">
-              <label className="text-[10px] font-black uppercase tracking-widest text-[#cc0066]">
+              <label className="text-[10px] font-black uppercase tracking-widest text-[#7F00DF]">
                 Comisión PSE (%)
               </label>
               <input
@@ -207,11 +207,11 @@ const PlanModal = ({
                 step="0.1"
                 value={form.pse_fee_percent}
                 onChange={(e) => set('pse_fee_percent', e.target.value)}
-                className="w-full bg-pink-50 border-0 p-4 rounded-sm text-sm font-bold text-[#cc0066] focus:outline-none focus:ring-2 focus:ring-[#cc0066]"
+                className="w-full bg-indigo-50 border-0 p-4 rounded-sm text-sm font-bold text-[#7F00DF] focus:outline-none focus:ring-2 focus:ring-[#7F00DF]"
               />
             </div>
             <div className="flex flex-col gap-2">
-              <label className="text-[10px] font-black uppercase tracking-widest text-[#7a00cc]">
+              <label className="text-[10px] font-black uppercase tracking-widest text-[#7F00DF]">
                 Comisión Tarjeta (%)
               </label>
               <input
@@ -221,7 +221,7 @@ const PlanModal = ({
                 step="0.1"
                 value={form.card_fee_percent}
                 onChange={(e) => set('card_fee_percent', e.target.value)}
-                className="w-full bg-purple-50 border-0 p-4 rounded-sm text-sm font-bold text-[#7a00cc] focus:outline-none focus:ring-2 focus:ring-purple-300"
+                className="w-full bg-indigo-50 border-0 p-4 rounded-sm text-sm font-bold text-[#7F00DF] focus:outline-none focus:ring-2 focus:ring-[#7F00DF]/20"
               />
             </div>
           </div>
@@ -238,7 +238,7 @@ const PlanModal = ({
           <button
             onClick={() => onSave(form)}
             disabled={saving || !form.name.trim()}
-            className="flex-1 bg-[#cc0066] text-white px-4 py-3 rounded-sm font-bold text-sm hover:bg-[#a30052] transition-all disabled:opacity-40 flex items-center justify-center gap-2"
+            className="flex-1 bg-[#000051] text-white px-4 py-3 rounded-sm font-bold text-sm hover:bg-[#7F00DF] transition-all disabled:opacity-40 flex items-center justify-center gap-2"
           >
             {saving && (
               <div className="animate-spin h-4 w-4 border-2 border-white border-t-transparent rounded-full" />
@@ -283,8 +283,8 @@ const DeleteConfirmModal = ({
         className="bg-white rounded-sm shadow-2xl w-full max-w-md p-10"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex flex-col items-center text-center">
-          <div className="w-16 h-16 bg-rose-50 rounded-full flex items-center justify-center mb-6">
+        <div className="flex flex-col text-left">
+          <div className="w-16 h-16 bg-indigo-50 rounded-full flex items-center justify-center mb-6">
             <Trash2 size={32} className="text-rose-500" />
           </div>
           <h3 className="text-xl font-bold text-black uppercase tracking-tight mb-2">
@@ -306,7 +306,7 @@ const DeleteConfirmModal = ({
             <button
               onClick={onConfirm}
               disabled={loading}
-              className="flex-1 bg-rose-600 text-white px-4 py-3 rounded-sm font-bold text-sm hover:bg-rose-700 transition-all disabled:opacity-40 flex items-center justify-center gap-2"
+              className="flex-1 bg-[#000051] text-white px-4 py-3 rounded-sm font-bold text-sm hover:bg-[#7F00DF] transition-all disabled:opacity-40 flex items-center justify-center gap-2"
             >
               {loading ? (
                 <div className="animate-spin h-4 w-4 border-2 border-white border-t-transparent rounded-full" />
@@ -417,7 +417,7 @@ const UserModal = ({
                 value={form.name}
                 onChange={(e) => set('name', e.target.value)}
                 placeholder="Ej: Juan Pérez"
-                className="w-full bg-black/5 border-0 p-4 pl-12 rounded-sm text-sm font-bold text-black focus:outline-none focus:ring-2 focus:ring-[#cc0066]"
+                className="w-full bg-black/5 border-0 p-4 pl-12 rounded-sm text-sm font-bold text-black focus:outline-none focus:ring-2 focus:ring-[#7F00DF]"
               />
               <Users size={16} className="absolute left-4 top-4 text-black/20" />
             </div>
@@ -432,7 +432,7 @@ const UserModal = ({
                   value={form.email}
                   onChange={(e) => set('email', e.target.value)}
                   placeholder="juan@ejemplo.com"
-                  className="w-full bg-black/5 border-0 p-4 pl-12 rounded-sm text-sm font-bold text-black focus:outline-none focus:ring-2 focus:ring-[#cc0066]"
+                  className="w-full bg-black/5 border-0 p-4 pl-12 rounded-sm text-sm font-bold text-black focus:outline-none focus:ring-2 focus:ring-[#7F00DF]"
                 />
                 <Mail size={16} className="absolute left-4 top-4 text-black/20" />
               </div>
@@ -445,7 +445,7 @@ const UserModal = ({
                   value={form.phone}
                   onChange={(e) => set('phone', e.target.value)}
                   placeholder="3001234567"
-                  className="w-full bg-black/5 border-0 p-4 pl-12 rounded-sm text-sm font-bold text-black focus:outline-none focus:ring-2 focus:ring-[#cc0066]"
+                  className="w-full bg-black/5 border-0 p-4 pl-12 rounded-sm text-sm font-bold text-black focus:outline-none focus:ring-2 focus:ring-[#7F00DF]"
                 />
                 <Phone size={16} className="absolute left-4 top-4 text-black/20" />
               </div>
@@ -458,7 +458,7 @@ const UserModal = ({
               <select
                 value={form.role}
                 onChange={(e) => set('role', e.target.value as any)}
-                className="w-full bg-black/5 border-0 p-4 rounded-sm text-sm font-bold text-black focus:outline-none focus:ring-2 focus:ring-[#cc0066]"
+                className="w-full bg-black/5 border-0 p-4 rounded-sm text-sm font-bold text-black focus:outline-none focus:ring-2 focus:ring-[#7F00DF]"
               >
                 <option value="MERCHANT">Comercio (Vendedor)</option>
                 <option value="SUPERADMIN">Superadministrador</option>
@@ -466,11 +466,11 @@ const UserModal = ({
             </div>
             {form.role === 'MERCHANT' && (
               <div className="flex flex-col gap-2">
-                <label className="text-[10px] font-black uppercase tracking-widest text-[#7a00cc]">Vincular Comercio *</label>
+                <label className="text-[10px] font-black uppercase tracking-widest text-[#7F00DF]">Vincular Comercio *</label>
                 <select
                   value={form.merchant_id}
                   onChange={(e) => set('merchant_id', e.target.value)}
-                  className="w-full bg-purple-50 border-0 p-4 rounded-sm text-sm font-bold text-[#7a00cc] focus:outline-none focus:ring-2 focus:ring-purple-300"
+                  className="w-full bg-indigo-50 border-0 p-4 rounded-sm text-sm font-bold text-[#7F00DF] focus:outline-none focus:ring-2 focus:ring-[#7F00DF]/20"
                 >
                   <option value="">Seleccionar comercio...</option>
                   {merchants.map((m) => (
@@ -496,7 +496,7 @@ const UserModal = ({
                   type="password"
                   value={form.password}
                   onChange={(e) => set('password', e.target.value)}
-                  className="w-full bg-black/5 border-0 p-4 pl-12 rounded-sm text-sm font-bold text-black focus:outline-none focus:ring-2 focus:ring-[#cc0066]"
+                  className="w-full bg-black/5 border-0 p-4 pl-12 rounded-sm text-sm font-bold text-black focus:outline-none focus:ring-2 focus:ring-[#7F00DF]"
                 />
                 <Key size={16} className="absolute left-4 top-4 text-black/20" />
               </div>
@@ -508,7 +508,7 @@ const UserModal = ({
                   type="password"
                   value={form.confirmPassword}
                   onChange={(e) => set('confirmPassword', e.target.value)}
-                  className="w-full bg-black/5 border-0 p-4 pl-12 rounded-sm text-sm font-bold text-black focus:outline-none focus:ring-2 focus:ring-[#cc0066]"
+                  className="w-full bg-black/5 border-0 p-4 pl-12 rounded-sm text-sm font-bold text-black focus:outline-none focus:ring-2 focus:ring-[#7F00DF]"
                 />
                 <Key size={16} className="absolute left-4 top-4 text-black/20" />
               </div>
@@ -529,7 +529,7 @@ const UserModal = ({
           <button
             onClick={() => onSave(form)}
             disabled={saving || !isFormValid}
-            className="flex-1 bg-[#cc0066] text-white px-4 py-3 rounded-sm font-bold text-sm hover:bg-[#a30052] transition-all disabled:opacity-40 flex items-center justify-center gap-2"
+            className="flex-1 bg-[#000051] text-white px-4 py-3 rounded-sm font-bold text-sm hover:bg-[#7F00DF] transition-all disabled:opacity-40 flex items-center justify-center gap-2"
           >
             {saving && <div className="animate-spin h-4 w-4 border-2 border-white border-t-transparent rounded-full" />}
             {user ? 'Actualizar' : 'Crear Usuario'}
@@ -753,7 +753,7 @@ export const SuperadminSettings = () => {
     return (
       <Layout role="SUPERADMIN">
         <div className="flex items-center justify-center min-h-screen bg-[#F2F2F2]">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#cc0066]" />
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#7F00DF]" />
         </div>
       </Layout>
     );
@@ -761,10 +761,10 @@ export const SuperadminSettings = () => {
 
   return (
     <Layout role="SUPERADMIN">
-      <div className="p-4 md:p-12 w-full max-w-[1280px] mx-auto bg-[#F2F2F2] min-h-screen">
+      <div className="p-4 md:p-12 w-full max-w-[1600px] mx-auto bg-[#F2F2F2] min-h-screen">
         {/* Page Header */}
         <header className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-8 pt-12 lg:pt-0">
-          <div>
+          <div className="text-left">
             <h1 className="text-xl md:text-2xl font-black text-black tracking-tight uppercase">
               Configuración del Sistema
             </h1>
@@ -776,7 +776,7 @@ export const SuperadminSettings = () => {
             <button
               onClick={handleSaveGateway}
               disabled={saving}
-              className="w-full md:w-auto bg-[#cc0066] text-white px-8 py-3 rounded-sm font-bold flex items-center justify-center gap-2 hover:bg-[#a30052] transition-all disabled:opacity-50"
+              className="w-full md:w-auto bg-[#000051] text-white px-8 py-3 rounded-sm font-bold flex items-center justify-center gap-2 hover:bg-[#7F00DF] transition-all disabled:opacity-50"
             >
               {saving ? (
                 <div className="animate-spin h-4 w-4 border-2 border-white border-t-transparent rounded-full" />
@@ -796,13 +796,13 @@ export const SuperadminSettings = () => {
               onClick={() => setActiveTab(tab)}
               className={`pb-4 text-sm font-bold transition-all relative ${
                 activeTab === tab
-                  ? 'text-[#cc0066]'
+                  ? 'text-[#7F00DF]'
                   : 'text-black/40 hover:text-black'
               }`}
             >
               {tab === 'gateway' ? 'Pasarela' : tab === 'plans' ? 'Planes' : tab === 'users' ? 'Usuarios' : 'Comercios'}
               {activeTab === tab && (
-                <div className="absolute bottom-0 left-0 w-full h-0.5 bg-[#cc0066]" />
+                <div className="absolute bottom-0 left-0 w-full h-0.5 bg-[#000051]" />
               )}
             </button>
           ))}
@@ -844,7 +844,7 @@ export const SuperadminSettings = () => {
                         setGatewayConfig({ ...gatewayConfig, pse_api_key: e.target.value })
                       }
                       placeholder="pub_test_..."
-                      className="w-full bg-black/5 border-0 p-4 pr-12 rounded-sm text-sm font-mono text-black/60 focus:outline-none focus:ring-2 focus:ring-[#cc0066]"
+                      className="w-full bg-black/5 border-0 p-4 pr-12 rounded-sm text-sm font-mono text-black/60 focus:outline-none focus:ring-2 focus:ring-[#7F00DF]"
                     />
                     <Lock size={16} className="absolute right-4 top-4 text-black/20" />
                   </div>
@@ -861,7 +861,7 @@ export const SuperadminSettings = () => {
                         setGatewayConfig({ ...gatewayConfig, card_api_key: e.target.value })
                       }
                       placeholder="prv_test_..."
-                      className="w-full bg-black/5 border-0 p-4 pr-12 rounded-sm text-sm font-mono text-black/60 focus:outline-none focus:ring-2 focus:ring-[#cc0066]"
+                      className="w-full bg-black/5 border-0 p-4 pr-12 rounded-sm text-sm font-mono text-black/60 focus:outline-none focus:ring-2 focus:ring-[#1E1E1E]"
                     />
                     <button
                       onClick={() => setShowApiKey(!showApiKey)}
@@ -884,7 +884,7 @@ export const SuperadminSettings = () => {
               description="Define tarifas fijas y comisiones diferenciadas por método de pago para cada plan."
             >
               {plans.length === 0 ? (
-                <p className="text-center text-black/30 py-8 text-sm">
+                <p className="text-left text-black/30 py-8 text-sm">
                   No hay planes configurados aún. Crea el primero.
                 </p>
               ) : (
@@ -907,10 +907,10 @@ export const SuperadminSettings = () => {
                           <td className="py-5 font-semibold text-black/60">
                             ${Number(plan.monthly_price).toLocaleString('es-CO')}
                           </td>
-                          <td className="py-5 font-bold text-[#cc0066]">
+                          <td className="py-5 font-bold text-[#7F00DF]">
                             {Number(plan.pse_fee_percent).toFixed(1)}%
                           </td>
-                          <td className="py-5 font-bold text-[#7a00cc]">
+                          <td className="py-5 font-bold text-[#7F00DF]">
                             {Number(plan.card_fee_percent).toFixed(1)}%
                           </td>
                           <td className="py-5 font-bold text-rose-500">
@@ -929,7 +929,7 @@ export const SuperadminSettings = () => {
                               </button>
                               <button 
                                 onClick={() => setPlanToDelete({ id: plan.id, name: plan.name })}
-                                className="p-2 text-black/20 hover:text-rose-600 transition-colors"
+                                className="p-2 text-black/20 hover:text-[#7F00DF] transition-colors"
                               >
                                 <Trash2 size={17} />
                               </button>
@@ -947,7 +947,7 @@ export const SuperadminSettings = () => {
                   setEditingPlan(null);
                   setIsModalOpen(true);
                 }}
-                className="mt-8 flex items-center gap-2 text-[#cc0066] font-bold text-sm hover:underline"
+                className="mt-8 flex items-center gap-2 text-[#7F00DF] font-bold text-sm hover:underline"
               >
                 <Plus size={18} />
                 Agregar Nuevo Plan
@@ -964,7 +964,7 @@ export const SuperadminSettings = () => {
               description="Administra los usuarios del sistema, sus accesos y credenciales."
             >
               {users.length === 0 ? (
-                <p className="text-center text-black/30 py-8 text-sm">
+                <p className="text-left text-black/30 py-8 text-sm">
                   No hay usuarios registrados aún.
                 </p>
               ) : (
@@ -1016,7 +1016,7 @@ export const SuperadminSettings = () => {
                               </button>
                               <button 
                                 onClick={() => setUserToDelete({ id: user.id, name: user.name })}
-                                className="p-2 text-black/20 hover:text-rose-600 transition-colors"
+                                className="p-2 text-black/20 hover:text-[#7F00DF] transition-colors"
                               >
                                 <Trash2 size={17} />
                               </button>
@@ -1034,7 +1034,7 @@ export const SuperadminSettings = () => {
                   setEditingUser(null);
                   setIsUserModalOpen(true);
                 }}
-                className="mt-8 flex items-center gap-2 text-[#cc0066] font-bold text-sm hover:underline"
+                className="mt-8 flex items-center gap-2 text-[#7F00DF] font-bold text-sm hover:underline"
               >
                 <Plus size={18} />
                 Agregar Nuevo Usuario
@@ -1051,7 +1051,7 @@ export const SuperadminSettings = () => {
               description="Visualiza todos los comercios registrados en la plataforma y sus planes actuales."
             >
               {merchants.length === 0 ? (
-                <p className="text-center text-black/30 py-8 text-sm">
+                <p className="text-left text-black/30 py-8 text-sm">
                   No hay comercios registrados aún.
                 </p>
               ) : (
@@ -1173,10 +1173,10 @@ const DetailItem = ({ label, value, full }: any) => (
 const DocLink = ({ label, value }: any) => (
   <div className="flex items-center justify-between p-4 bg-black/5 rounded-2xl hover:bg-black/10 transition-colors cursor-pointer group">
     <div className="flex items-center gap-3">
-      <FileText size={18} className="text-black/20 group-hover:text-[#cc0066] transition-colors" />
+      <FileText size={18} className="text-black/20 group-hover:text-[#7F00DF] transition-colors" />
       <span className="text-[10px] font-black text-black uppercase tracking-widest">{label}</span>
     </div>
-    <span className="text-[9px] font-bold text-[#cc0066] underline">{value ? 'VER ARCHIVO' : 'NO CARGADO'}</span>
+    <span className="text-[9px] font-bold text-[#7F00DF] underline">{value ? 'VER ARCHIVO' : 'NO CARGADO'}</span>
   </div>
 );
 
