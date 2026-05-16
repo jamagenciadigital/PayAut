@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Sidebar } from './Sidebar';
+import { MobileNav } from './MobileNav';
 import { currentUser } from '../mockData';
 import { Menu, X } from 'lucide-react';
 import logo from '../assets/logo_pagosx.svg';
@@ -46,9 +47,12 @@ export const Layout = ({ children, role }: LayoutProps) => {
       </div>
 
       {/* Main Content */}
-      <main className="flex-1 lg:pl-72 min-h-screen overflow-x-hidden min-w-0 w-full pt-16 lg:pt-0">
+      <main className="flex-1 lg:pl-72 min-h-screen overflow-x-hidden min-w-0 w-full pt-16 lg:pt-0 pb-32 lg:pb-0">
         {children}
       </main>
+
+      {/* Mobile Bottom Nav */}
+      {displayRole === 'MERCHANT' && <MobileNav />}
     </div>
   );
 };
