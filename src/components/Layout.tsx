@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Sidebar } from './Sidebar';
 import { currentUser } from '../mockData';
 import { Menu, X } from 'lucide-react';
+import logo from '../assets/logo_pagosx.svg';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -14,13 +15,19 @@ export const Layout = ({ children, role }: LayoutProps) => {
   
   return (
     <div className="flex min-h-screen bg-[#F2F2F2] w-full relative">
-      {/* Mobile Menu Toggle */}
-      <button 
-        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        className="lg:hidden fixed top-4 left-4 z-[60] p-2 bg-[#7F00DF] text-white rounded-lg shadow-lg"
-      >
-        {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-      </button>
+      {/* Mobile Top Bar */}
+      <div className="lg:hidden fixed top-0 left-0 right-0 h-16 bg-white border-b border-black/5 z-[60] flex items-center px-4 justify-between">
+        <button 
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="p-2 bg-[#7F00DF] text-white rounded-lg shadow-lg"
+        >
+          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+        
+        <img src={logo} alt="PagoX" className="h-8 md:h-10" />
+        
+        <div className="w-10" /> {/* Spacer to center logo */}
+      </div>
 
       {/* Overlay for mobile */}
       {isMobileMenuOpen && (
